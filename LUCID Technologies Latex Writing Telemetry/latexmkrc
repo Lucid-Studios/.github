@@ -9,3 +9,26 @@ add_cus_dep('glo','gls',0,'makeglossaries');
 
 # extra cleanup
 $clean_ext .= ' %R.nav %R.snm %R.synctex.gz';
+
+# ------------------------------------------------------------
+# HOW TO USE THIS (latexmkrc)
+# ------------------------------------------------------------
+# 1) To compile:
+#    latexmk -pdf main.tex
+#    (Runs LuaLaTeX, then biber, then LuaLaTeX twice more.)
+#
+# 2) Glossaries:
+#    If you use glossaries, latexmk will call 'makeglossaries'
+#    automatically when a .glo file is detected.
+#
+# 3) Cleanup:
+#    latexmk -c     # removes auxiliary files
+#    latexmk -C     # removes aux files + generated PDFs
+#
+# 4) Philosophy:
+#    Keep the build brain here — don’t hardcode compile
+#    commands in docs or READMEs. If you change your workflow,
+#    update this one file and everyone stays in sync.
+#
+# Version: v1.0.0 — LUCID Technologies Latex Writing Telemetry
+# ------------------------------------------------------------
