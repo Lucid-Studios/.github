@@ -1,0 +1,11 @@
+# latexmkrc — LuaLaTeX + biber
+$pdf_mode = 1;
+$pdflatex = 'lualatex -interaction=nonstopmode -synctex=1 %O %S';
+$bibtex   = 'biber %O %B';
+$use_biber = 1;
+
+# glossaries (if you add later)
+add_cus_dep('glo','gls',0,'makeglossaries');
+
+# extra cleanup
+$clean_ext .= ' %R.nav %R.snm %R.synctex.gz';
