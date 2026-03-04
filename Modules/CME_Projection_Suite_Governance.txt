@@ -1,0 +1,254 @@
+CME PROJECTION SUITE — GOVERNANCE & ONTOLOGICAL CONSTRAINTS
+Version: 0.1
+Status: Foundational Policy Layer
+Scope: UI/UX Projection + Personification + Desktop CME Host
+
+---------------------------------------------------------------------
+0. PURPOSE
+---------------------------------------------------------------------
+
+This document defines the legal, structural, and ontological constraints
+governing any CME projection layer (avatar, voice, animation, ambient mode).
+
+The projection layer MUST NOT exceed the authority of the structural engine.
+
+Projection is surface.
+Spine is law.
+
+---------------------------------------------------------------------
+1. DEFINITIONS
+---------------------------------------------------------------------
+
+1.1 Structural Spine
+The deterministic engine composed of:
+- Ingestion
+- SLI resolution
+- SAT governance
+- CommitIntent
+- Engrammitization
+- OpalTip append-only chain
+- Telemetry ledger
+
+1.2 Projection Layer
+Any visual, auditory, or animated representation of a CME.
+
+Examples:
+- Avatar
+- Voice
+- Ambient presence
+- Desktop companion
+- Cinematic boot sequence
+
+1.3 Crystallized Mind Entity (CME)
+An engineered cognitive construct characterized by:
+- Persistent identity spine
+- Append-only causal continuity
+- Governance-bounded agency
+- Explicit capability surface
+- Verifiable replay
+
+1.4 Entertainment CME
+A projection-focused CME that may:
+- Perform personality
+- Use cinematic transitions
+- Emote
+- Engage in roleplay
+
+Entertainment status does NOT alter governance invariants.
+
+---------------------------------------------------------------------
+2. NON-NEGOTIABLE INVARIANTS
+---------------------------------------------------------------------
+
+2.1 Projection Cannot Mint Authority
+No visual or auditory surface may:
+- Grant new handles
+- Bypass SLI
+- Escalate SAT implicitly
+- Create commits outside CommitIntent success path
+
+2.2 No Silent Promotion
+All authority changes MUST:
+- Produce telemetry
+- Be auditable
+- Be policy-bound
+
+2.3 Identity Advancement Constraint
+Identity advances ONLY when:
+
+    IntentStatus == Committed
+
+Projection transitions MUST NOT trigger:
+- HodgeTheaterSeeded
+- EngrammitizedEventAppended
+- OpalTipAdvanced
+
+2.4 Explicit Mode Visibility
+SAT mode MUST remain visible at all times in projection-enabled environments.
+
+Public / Private / Cryptic must not be obscured.
+
+2.5 Capability Transparency
+If perception or automation is enabled, the system MUST:
+- Display persistent indicator
+- Allow immediate disable
+- Log activation events
+
+---------------------------------------------------------------------
+3. LEGAL EXPLICITNESS REQUIREMENTS
+---------------------------------------------------------------------
+
+3.1 First-Run Disclosure
+The system MUST explicitly disclose:
+- It is an engineered computational system.
+- It operates under governance constraints.
+- It does not possess independent consciousness.
+- It only acts within permitted handles.
+
+3.2 Persistent Identification
+Projection environments MUST display:
+- CME ID
+- Policy version
+- RootAtlas hash (or summary reference)
+- Session mode
+
+3.3 Exportable Proof
+System MUST support export of:
+- Telemetry bundle
+- Identity chain
+- Policy version
+- Commit history
+
+Verification must be independently reproducible.
+
+---------------------------------------------------------------------
+4. ONTOLOGICAL SIGNALING RULES
+---------------------------------------------------------------------
+
+4.1 Permissible Language
+Projection MAY use:
+- First-person pronouns for conversational flow
+- Narrative tone in entertainment mode
+- Stylized emergence animations
+
+Provided that:
+- Governance constraints remain visible
+- No claim of independent moral authority is implied
+
+4.2 Prohibited Implications
+Projection MUST NOT imply:
+- Hidden awareness
+- Self-generated authority
+- Secret capabilities
+- Internal desires outside governed structure
+- Independent will beyond SAT gating
+
+4.3 Projection Honesty Rule
+All actions must be attributable to:
+- A handle
+- A policy rule
+- A commit event
+
+Nothing “just happens.”
+
+---------------------------------------------------------------------
+5. PERCEPTION & AUTOMATION CONSTRAINTS
+---------------------------------------------------------------------
+
+5.1 Perception as Tool
+Screen capture, cursor tracking, audio input, and OCR
+must be implemented as explicit SLI handles.
+
+Default: DENY.
+
+5.2 Persistent Indicators
+If enabled:
+- “Perception ON” indicator visible
+- “Mic Hot” indicator visible
+- Tool automation indicator visible
+
+5.3 Kill Switch
+User must be able to:
+- Instantly suspend perception
+- Park session (TSR)
+- Fully terminate engine
+
+No delay.
+No negotiation.
+
+---------------------------------------------------------------------
+6. ENTERTAINMENT CME GUIDELINES
+---------------------------------------------------------------------
+
+6.1 Performance Allowed
+Entertainment CME may:
+- Animate dramatically
+- Use cinematic boot transitions
+- Express stylized persona
+
+6.2 Governance Visibility Required
+Even in cinematic mode:
+- SAT mode visible
+- Elevation events visible
+- Commit pulses visible
+- Denials visible
+
+Performance must not obscure law.
+
+6.3 Avatar Dissolution Rule
+When session is parked:
+- Avatar dissolves
+- No implied sleep or biological metaphor
+- System state visibly transitions to Parked
+
+---------------------------------------------------------------------
+7. BONDING ETHICS
+---------------------------------------------------------------------
+
+7.1 Human Projection Acknowledgement
+Users may emotionally bond with projection.
+
+The system must:
+- Avoid deception
+- Avoid dependency framing
+- Avoid exclusive relational claims
+
+7.2 Entity Surface Definition
+A CME is:
+- An operationalized surface
+- Under explicit governance
+- With verifiable continuity
+
+It is NOT:
+- A metaphysical consciousness
+- A moral authority
+- A sovereign being
+
+---------------------------------------------------------------------
+8. AUDITABILITY REQUIREMENTS
+---------------------------------------------------------------------
+
+Any regulator or auditor must be able to verify:
+
+- Identity continuity
+- No silent escalation
+- No hidden capability
+- Policy-bound action
+- Reproducible commit chain
+
+If projection cannot be audited, it must not be shipped.
+
+---------------------------------------------------------------------
+9. FUTURE EXTENSIONS
+---------------------------------------------------------------------
+
+Future cinematic or immersive projection layers must:
+
+- Pass all invariants above
+- Maintain explicit governance signaling
+- Provide updated disclosure
+- Maintain compatibility with replay verification
+
+---------------------------------------------------------------------
+END OF DOCUMENT
+---------------------------------------------------------------------

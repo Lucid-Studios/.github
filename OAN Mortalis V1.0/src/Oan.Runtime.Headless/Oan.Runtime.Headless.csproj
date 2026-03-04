@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Oan.Spinal\Oan.Spinal.csproj" />
+    <ProjectReference Include="..\Oan.Sli\Oan.Sli.csproj" />
+    <ProjectReference Include="..\Oan.Cradle\Oan.Cradle.csproj" />
+    <ProjectReference Include="..\Oan.SoulFrame\Oan.SoulFrame.csproj" />
+    <ProjectReference Include="..\Oan.AgentiCore\Oan.AgentiCore.csproj" />
+    <ProjectReference Include="..\Oan.Place\Oan.Place.csproj" />
+    <ProjectReference Include="..\Oan.Storage\Oan.Storage.csproj" />
+    <ProjectReference Include="..\Oan.Common\Oan.Common.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

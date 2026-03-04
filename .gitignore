@@ -1,0 +1,17 @@
+# Build outputs
+**/bin/
+**/obj/
+**/TestResults/
+
+# IDE/editor settings
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Logs and diagnostics
+*.log
+*.binlog
+
+# Large/local artifacts
+Modules/Antigravity.exe

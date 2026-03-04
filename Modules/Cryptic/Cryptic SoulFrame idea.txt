@@ -1,0 +1,215 @@
+Perfect.
+Here is a **clean architectural snapshot** you can paste into a new thread later without losing context.
+
+---
+
+# 🔐 Cryptic Store Refactor Snapshot
+
+## Proposal: Move Cryptic Storage to SoulFrame, Keep Cryptic Root in CradleTek
+
+### Status
+
+Conceptual architectural shift under consideration.
+Not yet implemented.
+No schema changes committed.
+
+---
+
+# 1️⃣ Current Model (v0.1.0 Implicit)
+
+Cryptic capability and storage both live in **CradleTek**.
+
+CradleTek currently:
+
+* Hosts GEL
+* Hosts Gate
+* Hosts RootAtlas
+* Enforces SAT/HITL
+* Applies Masking Policy
+* Stores cryptic entries
+
+This creates:
+
+* System-level cryptic memory surface
+* Shared cryptic partition risk
+* Broader blast radius
+
+---
+
+# 2️⃣ Proposed Refactor
+
+### Keep in CradleTek:
+
+* Cryptic RootAtlas entries
+* Cryptic eligibility rules
+* SAT minimum enforcement
+* Masking policy logic
+* Gate evaluation discipline
+* PolicyBundle pinning
+
+CradleTek becomes:
+
+> Constitutional authority over cryptic capability.
+
+---
+
+### Move to SoulFrame:
+
+Per Operator / Bonded Agent cluster:
+
+* CrypticStore (append-only)
+* Cryptic index
+* Cryptic symbol pointers
+* Cryptic BraidIndex lineage
+* Cryptic runtime tensor cache
+
+Cryptic storage becomes:
+
+> Identity-scoped and compartmentalized.
+
+---
+
+# 3️⃣ Architectural Effect
+
+## Before:
+
+```
+CradleTek
+ ├── GEL (Public/Private/Cryptic)
+ └── Cryptic Root + Cryptic Store
+```
+
+## After:
+
+```
+CradleTek
+ ├── GEL (Public/Private)
+ ├── Cryptic Root (law only)
+ └── Gate / SAT / Masking
+
+SoulFrame (per identity cluster)
+ ├── PublicStore (optional link to global GEL)
+ ├── PrivateStore
+ └── CrypticStore (local, append-only)
+```
+
+---
+
+# 4️⃣ Layer Integrity (Still Preserved)
+
+Layer 0:
+
+* Cryptic GoldenEngrams still inert
+* Still canonical
+* Still append-only
+* Still CAS-protected (but possibly SoulFrame-scoped tip)
+
+Layer 1:
+
+* SLI still routes cryptic handles
+* Gate still enforces capability
+
+Layer 2:
+
+* Runtime salience unchanged
+
+No layer violations introduced.
+
+---
+
+# 5️⃣ Security & Governance Gains
+
+* Compartmentalization per bonded cluster
+* Reduced cross-session leakage risk
+* Reduced cryptic blast radius
+* Drift containment per SoulFrame
+* Clear separation of law (CradleTek) and memory (SoulFrame)
+
+This aligns with:
+
+> “Learn as many, act as one — without role bleed.”
+
+---
+
+# 6️⃣ Open Design Questions (Unresolved)
+
+### A. BraidIndex Scope
+
+Should cryptic BraidIndex hashes be:
+
+1. Global (cross-SoulFrame invariant)
+2. SoulFrame-local (maximum containment)
+
+This affects:
+
+* Cross-substrate equivalence
+* Mirror synchronization
+* Bonded cluster mobility
+
+---
+
+### B. Physical Storage Model
+
+Option A — Fully separate physical store per SoulFrame
+Option B — Shared GEL with SoulFrame namespace partition
+
+Tradeoff:
+
+* Isolation vs infrastructure simplicity
+
+---
+
+### C. CAS Discipline
+
+If cryptic store is SoulFrame-local:
+
+* Does it maintain independent tip?
+* Or participate in global tip tree?
+
+This affects lineage geometry.
+
+---
+
+# 7️⃣ Ontological Reframe
+
+This change reclassifies:
+
+CradleTek → Constitutional Court
+SoulFrame → Sovereign Cognitive Cell
+
+Cryptic memory becomes identity-bound, not system-bound.
+
+This strengthens:
+
+* Operator containment
+* Bonded cluster integrity
+* Modular cognition
+
+---
+
+# 8️⃣ No Changes Yet
+
+This is a design proposal only.
+
+No updates to:
+
+* Engrammitization.md
+* ENGRAMMITIZATION_SPEC_v0.1.0.md
+* PolicyBundle
+* GEL schema
+
+Next step (future thread):
+
+* Draft v0.2.0 amendment proposal
+* Or perform threat-model comparison between Option A and B
+
+---
+
+That snapshot preserves:
+
+* Your reasoning
+* The architectural move
+* The security implications
+* The unresolved forks
+
+We can pick it up later cleanly without re-deriving anything.

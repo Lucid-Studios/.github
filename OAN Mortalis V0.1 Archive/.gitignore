@@ -1,0 +1,5 @@
+/artifacts/build/*
+/artifacts/test/*
+/artifacts/audit/*
+**/artifacts/*
+*.log

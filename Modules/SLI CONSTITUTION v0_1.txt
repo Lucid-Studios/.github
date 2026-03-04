@@ -1,0 +1,180 @@
+SLI CONSTITUTION v0.1
+Deterministic Capability Gate for OAN Mortalis
+Date: 2026-02-15
+
+---------------------------------------------------------------------
+I. PURPOSE
+---------------------------------------------------------------------
+
+The Symbolic Language Interconnect (SLI) is the deterministic
+capability gate of the OAN Mortalis stack.
+
+SLI exists to ensure that:
+- No action executes without an explicit symbolic handle.
+- No compartment boundary is crossed silently.
+- No cryptic domain is accessed without governance.
+- All allow/deny decisions are auditable.
+- Identity formation remains append-only and policy-bound.
+
+SLI does not interpret meaning.
+SLI does not perform learning.
+SLI does not infer permissions.
+SLI enforces declared capability.
+
+---------------------------------------------------------------------
+II. CORE PRINCIPLES
+---------------------------------------------------------------------
+
+1. No Handle, No Action.
+   Every executable intent must declare a valid SLI handle.
+
+2. Deterministic Resolution.
+   Handle resolution must be purely deterministic:
+   - No wall-clock input.
+   - No stochastic routing.
+   - No heuristic permission inference.
+
+3. Explicit Addressing.
+   All handles resolve to a fully specified address:
+   Channel × Partition × Mirror
+
+4. Governance Before Execution.
+   SLI gate evaluation occurs before CommitIntent.
+
+5. Auditability Is Invariant.
+   Every denial includes:
+   - reasonCode
+   - policyVersion
+   Every allowance logs:
+   - handle
+   - resolved address
+   - SAT mode
+   - masking state (if applied)
+
+6. No Silent Promotion.
+   SLI does not canonize.
+   SLI only gates capability.
+
+---------------------------------------------------------------------
+III. ADDRESS SPACE MODEL
+---------------------------------------------------------------------
+
+All executable capability resolves to:
+
+Channel:
+  - Public
+  - Private
+
+Partition:
+  - GEL
+  - GOA
+  - OAN
+
+Mirror:
+  - Standard
+  - Cryptic
+
+ResolvedAddress = Channel × Partition × Mirror
+
+Cryptic mirrors represent compartmentalized domains that require
+explicit governance mode and may never bleed into Standard without
+authorized promotion.
+
+---------------------------------------------------------------------
+IV. ROOT ATLAS (HANDLE REGISTRY)
+---------------------------------------------------------------------
+
+Each SLI handle maps to a static registry entry:
+
+Handle → {
+    IntentKind,
+    AllowedChannel,
+    AllowedPartition,
+    AllowedMirror,
+    RequiredSatModes,
+    RequiresHITL,
+    PolicyVersion
+}
+
+The Root Atlas is static for MVP.
+No runtime modification is allowed.
+All registry entries are deterministic data.
+
+---------------------------------------------------------------------
+V. GATE EVALUATION ORDER
+---------------------------------------------------------------------
+
+Upon intent submission:
+
+1. Validate handle exists in Root Atlas.
+2. Validate session-mounted partitions allow address.
+3. Validate SAT mode satisfies RequiredSatModes.
+4. Validate channel/mirror alignment.
+5. If Cryptic:
+     - Require SAT Gate or stronger.
+     - Apply masking policy.
+6. Produce Allow or Deny.
+
+No step may be skipped.
+No implicit fallback is allowed.
+
+---------------------------------------------------------------------
+VI. CRYPTIC MASKING (MVP)
+---------------------------------------------------------------------
+
+For MVP:
+
+- Public channel may not directly access Cryptic mirrors.
+- Private channel may access Cryptic only if SAT mode permits.
+- Masking may be a placeholder flag but must be logged.
+- No redaction inference is performed at MVP stage.
+
+---------------------------------------------------------------------
+VII. RELATION TO OTHER LAYERS
+---------------------------------------------------------------------
+
+Cradle:
+  Defines addressability and lifecycle.
+
+SoulFrame:
+  Mounts compartments and enforces session governance.
+
+AgentiCore:
+  Forms engrams from gated commitments.
+  Never bypasses SLI.
+
+IntentProcessor:
+  Executes only post-SLI validation.
+
+EngramFormation:
+  May record handle and resolution context as factors or refs.
+  Does not alter SLI behavior.
+
+---------------------------------------------------------------------
+VIII. NON-GOALS (FOR MVP)
+---------------------------------------------------------------------
+
+SLI does NOT:
+- Parse natural language.
+- Auto-generate handles.
+- Modify policy dynamically.
+- Perform novelty detection.
+- Promote candidate engrams.
+- Interpret user intent heuristically.
+
+SLI is a deterministic capability router only.
+
+---------------------------------------------------------------------
+IX. DESIGN PHILOSOPHY ALIGNMENT
+---------------------------------------------------------------------
+
+Identity = append-only causal continuity.
+Capability = explicitly declared symbolic permission.
+Governance = modulation function, not suppression switch.
+Cryptic domains = compartmentalized mirrors, not secret knowledge.
+Auditability = invariant.
+Promotion = explicit act, never emergent.
+
+---------------------------------------------------------------------
+END OF DOCUMENT
+---------------------------------------------------------------------
