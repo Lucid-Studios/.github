@@ -1,25 +1,46 @@
-using OAN.Core.Identity;
+using CradleTek.Host.Interfaces;
 using OAN.Core.Services;
 
 namespace CradleTek.Host;
 
 public sealed class CradleTekHost : IOanService
 {
-    private readonly ISoulFrameContext _soulFrameContext;
-    private readonly IOanService _agentRuntime;
+    private readonly IMantleService _mantleOfSovereignty;
+    private readonly ICrypticStore _crypticLayer;
+    private readonly IPublicStore _publicLayer;
+    private readonly IRuntimeService _runtimeLayer;
 
-    public CradleTekHost(ISoulFrameContext soulFrameContext, IOanService agentRuntime)
+    public CradleTekHost(
+        IMantleService mantleOfSovereignty,
+        ICrypticStore crypticLayer,
+        IPublicStore publicLayer,
+        IRuntimeService runtimeLayer)
     {
-        _soulFrameContext = soulFrameContext;
-        _agentRuntime = agentRuntime;
+        _mantleOfSovereignty = mantleOfSovereignty;
+        _crypticLayer = crypticLayer;
+        _publicLayer = publicLayer;
+        _runtimeLayer = runtimeLayer;
     }
 
     public string ServiceId => "cradletek.host";
 
-    public Guid ActiveIdentityId => _soulFrameContext.IdentityId;
+    public IReadOnlyList<string> Topology { get; } =
+    [
+        "CradleTek.MantleOfSovereignty",
+        "CradleTek.CrypticLayer.cGEL",
+        "CradleTek.CrypticLayer.cGoA",
+        "CradleTek.CrypticLayer.CrypticSLI",
+        "CradleTek.PublicLayer.GEL",
+        "CradleTek.PublicLayer.GoA",
+        "CradleTek.PublicLayer.PrimeSLI",
+        "CradleTek.RuntimeLayer.OAN"
+    ];
 
     public async Task InitializeAsync(CancellationToken cancellationToken = default)
     {
-        await _agentRuntime.InitializeAsync(cancellationToken).ConfigureAwait(false);
+        await _mantleOfSovereignty.InitializeAsync(cancellationToken).ConfigureAwait(false);
+        await _crypticLayer.InitializeAsync(cancellationToken).ConfigureAwait(false);
+        await _publicLayer.InitializeAsync(cancellationToken).ConfigureAwait(false);
+        await _runtimeLayer.InitializeAsync(cancellationToken).ConfigureAwait(false);
     }
 }
