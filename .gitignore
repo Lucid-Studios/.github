@@ -15,3 +15,6 @@
 
 # Large/local artifacts
 Modules/Antigravity.exe
+
+# Local indexer scratch output
+OAN Mortalis V1.0/tools/corpus_index/
