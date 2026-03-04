@@ -6,6 +6,7 @@ namespace CradleTek.Mantle;
 public sealed class MantleOfSovereigntyService : IMantleService
 {
     private readonly Dictionary<Guid, OpalEngram> _shadows = [];
+    private readonly List<SoulFrameSnapshotRequest> _soulFrameSnapshots = [];
 
     public string ContainerName => "MantleOfSovereignty";
 
@@ -19,6 +20,13 @@ public sealed class MantleOfSovereigntyService : IMantleService
     {
         ArgumentNullException.ThrowIfNull(engram);
         _shadows[engram.IdentityId] = Clone(engram);
+        return Task.CompletedTask;
+    }
+
+    public Task RequestSoulFrameSnapshotAsync(SoulFrameSnapshotRequest request, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        _soulFrameSnapshots.Add(request);
         return Task.CompletedTask;
     }
 

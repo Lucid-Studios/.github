@@ -2,8 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OAN.Core\OAN.Core.csproj" />
-    <ProjectReference Include="..\SoulFrame.Identity\SoulFrame.Identity.csproj" />
     <ProjectReference Include="..\AgentiCore.Runtime\AgentiCore.Runtime.csproj" />
+    <ProjectReference Include="..\SoulFrame.Identity\SoulFrame.Identity.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
