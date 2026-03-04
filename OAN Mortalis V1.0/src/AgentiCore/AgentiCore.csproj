@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\AgentiCore\AgentiCore.csproj" />
     <ProjectReference Include="..\CradleTek.Host\CradleTek.Host.csproj" />
-    <ProjectReference Include="..\SLI.Engine\SLI.Engine.csproj" />
+    <ProjectReference Include="..\OAN.Core\OAN.Core.csproj" />
+    <ProjectReference Include="..\SoulFrame.Identity\SoulFrame.Identity.csproj" />
     <ProjectReference Include="..\Telemetry.GEL\Telemetry.GEL.csproj" />
   </ItemGroup>
 

@@ -75,6 +75,7 @@ public sealed class CradleTekHost : IOanService
             DateTime.UtcNow);
 
         await _mantleOfSovereignty.RequestSoulFrameSnapshotAsync(snapshot, cancellationToken).ConfigureAwait(false);
+        await _runtimeLayer.ActivateSoulFrameAsync(soulFrame, cancellationToken).ConfigureAwait(false);
 
         return soulFrame;
     }
