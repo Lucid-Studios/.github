@@ -45,7 +45,7 @@ if ([string]::IsNullOrWhiteSpace($rawCorpusPath)) {
 
 $resolvedCorpusPath = [System.IO.Path]::GetFullPath($rawCorpusPath)
 $trackedFiles = Get-TrackedFiles
-$leakedFiles = Test-CorpusPathLeak -CorpusPath $resolvedCorpusPath -Files $trackedFiles
+$leakedFiles = @(Test-CorpusPathLeak -CorpusPath $resolvedCorpusPath -Files $trackedFiles)
 
 if ($leakedFiles.Count -gt 0) {
     Write-Host "FAIL: Detected private corpus path leakage in tracked files."
