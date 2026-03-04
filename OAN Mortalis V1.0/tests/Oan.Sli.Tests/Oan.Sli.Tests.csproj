@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Oan.Sli\Oan.Sli.csproj" />
+    <ProjectReference Include="..\..\src\SLI.Engine\SLI.Engine.csproj" />
   </ItemGroup>
 
 </Project>
