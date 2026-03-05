@@ -1,0 +1,12 @@
+﻿{
+  "schema": "sli.scar.bias_spec.v0.1.0",
+  "description": "SCAR attention bias routing plan derived from a sheaf.",
+  "required": [
+    "schema",
+    "source",
+    "tokens",
+    "anchors",
+    "bias_blocks",
+    "defaults"
+  ]
+}

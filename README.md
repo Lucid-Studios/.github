@@ -57,6 +57,7 @@ Run Symbolic Language Engine validation and Flow telemetry generation:
 
 1. `powershell -ExecutionPolicy Bypass -File "D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\Validate-SLE.ps1"`
 2. `powershell -ExecutionPolicy Bypass -File "D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\build.ps1"`
+3. `powershell -ExecutionPolicy Bypass -File "D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\Generate-SCAR.ps1"`
 
 Strict reserved key mode (semantic indices only):
 
@@ -66,6 +67,10 @@ Telemetry outputs:
 
 1. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\flow_metrics.json`
 2. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\cognition_telemetry.json`
+3. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\scar_bias_spec.json`
+4. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\scar_head_gate.json`
+5. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\scar_kv_anchor.json`
+6. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\scar_telemetry.json`
 
 Hard build gates:
 
@@ -73,3 +78,12 @@ Hard build gates:
 2. duplicate symbols across indices > 0
 3. canonical sheaf validity rate < 1.0
 4. index/schema JSON parse failures
+5. SCAR/glue-map schema or validation failures (missing domains, invalid mappings, specialization cycles, reserved collisions in mapping identifiers)
+
+Domain sheaf + glue map assets:
+
+1. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\DomainSheaves\gel.sheaf_package.v0.1.0.json`
+2. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\DomainSheaves\gel.glue_map.v0.1.0.json`
+3. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\DomainSheaves\package.medicine.cardiology.v0.1.0.json`
+4. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\DomainSheaves\package.medicine.pharmacology.v0.1.0.json`
+5. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\DomainSheaves\glue.map.medicine_cardiology_pharm.v0.1.0.json`
