@@ -45,10 +45,46 @@
     "storage": "Escaped unicode or visual symbol rendering",
     "validation": "All symbols must be unique and decode into prefix-root-suffix components if present."
   },
+  "indices": {
+    "core": [
+      "PrefixIndex",
+      "RootIndex",
+      "SuffixIndex"
+    ],
+    "semantic": [
+      "OperatorIndex",
+      "RelationIndex",
+      "GrammarSheafIndex"
+    ],
+    "reserved": [
+      "ReservedIndex"
+    ]
+  },
   "assignment_rules": {
-    "symbol_uniqueness": "No duplicate symbols across PrefixIndex, RootIndex, or SuffixIndex unless explicitly allowed in compound class.",
+    "symbol_uniqueness": "No duplicate symbols across PrefixIndex, RootIndex, SuffixIndex, OperatorIndex, RelationIndex, or GrammarSheafIndex unless explicitly allowed in compound class.",
     "fallback_symbol": "@.@",
     "max_assignable_characters": 5120,
+    "reserved_enforcement": {
+      "mode": "hard_ban",
+      "assignment_blocked_in": [
+        "PrefixIndex",
+        "RootIndex",
+        "SuffixIndex",
+        "OperatorIndex",
+        "RelationIndex",
+        "GrammarSheafIndex"
+      ],
+      "parse_mode": "allow_literals_only",
+      "token_scope": "single_character_and_multi_character_tokens"
+    },
+    "fractional_encoding_usage": {
+      "allowed_locations": [
+        "sheaf.scope",
+        "sheaf.events[].mode",
+        "sheaf.states[].confidence"
+      ],
+      "collision_policy": "fractional values are metadata fields and must never be used as index symbol assignments"
+    },
     "reserved": {
       "meta": [
         "⍙",

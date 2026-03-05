@@ -41,3 +41,12 @@ This archive is released under the Creative Commons Attributionâ€“NonCommercialâ
 No commercial use, modification, or redistribution is permitted without express written permission.  
 Trademark usage without authorization is strictly prohibited.
 ---
+
+## GEL Symbolic Pipeline (v0.2)
+
+English input now bridges into a structured middle layer before formal math logic:
+
+1. Root lexicon anchoring via `RootIndex.json`.
+2. Sheaf construction via `gel.sheaf.v0.2.0.json` (`entities`, `states`, `events`, `scope`, optional `x/y/z` fields).
+3. Semantic operator/relation composition via `OperatorIndex.json`, `RelationIndex.json`, and `GrammarSheafIndex.json`.
+4. Formal symbolic/math projection while preserving `ReservedIndex` and `Reserved[]` protections.
