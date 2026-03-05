@@ -31,6 +31,11 @@
 - operator_denial_reason_codes_valid: True
 - operator_repo_policy_enforced: True
 - operator_seal_admission_enforced: True
+- founding_constitution_witness: True
+- bonded_operator_continuity: True
+- reentry_replay_integrity: True
+- anti_downgrade_enforced: True
+- denial_namespace_valid: True
 
 ## Coverage Breakdown
 - pos=0 text='The' node= reason=unmapped_stopword eligible=False

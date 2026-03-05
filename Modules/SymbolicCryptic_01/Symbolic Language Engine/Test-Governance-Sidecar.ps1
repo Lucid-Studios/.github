@@ -19,7 +19,14 @@ if (-not $Contracts -or $Contracts.Count -eq 0) {
       (Join-Path $ModulePath "Governance\oan.operator_selection_manifest.v0.1.0.json"),
       (Join-Path $ModulePath "Governance\profile.personal.v0.1.0.json"),
       (Join-Path $ModulePath "Governance\profile.enterprise.v0.1.0.json"),
-      (Join-Path $ModulePath "Governance\profile.government.v0.1.0.json")
+      (Join-Path $ModulePath "Governance\profile.government.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\oan.operator_identity_record.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\oan.first_boot_contract.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\oan.operator_bonding_set.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\oan.sanctuary_founding_event.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\oan.continuous_use_reentry.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\oan.authentication_chain.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\oan.data_protection_policy.v0.1.0.json")
     )
 }
 

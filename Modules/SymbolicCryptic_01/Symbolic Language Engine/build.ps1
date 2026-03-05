@@ -64,6 +64,27 @@ if (-not (Test-Path -Path $operatorSelectionScript -PathType Leaf)) {
 & $operatorSelectionScript -ModulePath $PSScriptRoot -TelemetryDir (Join-Path $PSScriptRoot "telemetry") -CognitionTelemetryPath (Join-Path $PSScriptRoot "telemetry\\cognition_telemetry.json")
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+$firstBootScript = Join-Path $PSScriptRoot "Invoke-First-Boot.ps1"
+if (-not (Test-Path -Path $firstBootScript -PathType Leaf)) {
+    throw "Missing first boot script: $firstBootScript"
+}
+& $firstBootScript -ModulePath $PSScriptRoot -TelemetryDir (Join-Path $PSScriptRoot "telemetry") -CognitionTelemetryPath (Join-Path $PSScriptRoot "telemetry\\cognition_telemetry.json")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+$operatorBondingScript = Join-Path $PSScriptRoot "Test-Operator-Bonding.ps1"
+if (-not (Test-Path -Path $operatorBondingScript -PathType Leaf)) {
+    throw "Missing operator bonding script: $operatorBondingScript"
+}
+& $operatorBondingScript -ModulePath $PSScriptRoot -TelemetryDir (Join-Path $PSScriptRoot "telemetry") -CognitionTelemetryPath (Join-Path $PSScriptRoot "telemetry\\cognition_telemetry.json")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+$reentryScript = Join-Path $PSScriptRoot "Invoke-Continuous-Reentry.ps1"
+if (-not (Test-Path -Path $reentryScript -PathType Leaf)) {
+    throw "Missing continuous use reentry script: $reentryScript"
+}
+& $reentryScript -ModulePath $PSScriptRoot -TelemetryDir (Join-Path $PSScriptRoot "telemetry") -CognitionTelemetryPath (Join-Path $PSScriptRoot "telemetry\\cognition_telemetry.json") -SidecarOutDir (Join-Path $PSScriptRoot "telemetry\\governance_sidecars")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 $bondingContractScript = Join-Path $PSScriptRoot "Test-Bonding-Contract.ps1"
 if (-not (Test-Path -Path $bondingContractScript -PathType Leaf)) {
     throw "Missing bonding contract test script: $bondingContractScript"
