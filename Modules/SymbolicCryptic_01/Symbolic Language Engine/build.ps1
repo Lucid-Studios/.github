@@ -57,6 +57,13 @@ if (-not (Test-Path -Path $sidecarVerifyScript -PathType Leaf)) {
 & $sidecarVerifyScript -ModulePath $PSScriptRoot -SidecarOutDir (Join-Path $PSScriptRoot "telemetry\\governance_sidecars")
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+$operatorSelectionScript = Join-Path $PSScriptRoot "Test-Operator-Selection.ps1"
+if (-not (Test-Path -Path $operatorSelectionScript -PathType Leaf)) {
+    throw "Missing operator selection test script: $operatorSelectionScript"
+}
+& $operatorSelectionScript -ModulePath $PSScriptRoot -TelemetryDir (Join-Path $PSScriptRoot "telemetry") -CognitionTelemetryPath (Join-Path $PSScriptRoot "telemetry\\cognition_telemetry.json")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 $bondingContractScript = Join-Path $PSScriptRoot "Test-Bonding-Contract.ps1"
 if (-not (Test-Path -Path $bondingContractScript -PathType Leaf)) {
     throw "Missing bonding contract test script: $bondingContractScript"

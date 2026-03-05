@@ -17,12 +17,14 @@ $manifestPath = Join-Path $ModulePath "Governance\oan.role_manifest.v0.1.0.json"
 $charterPath = Join-Path $ModulePath "Governance\oan.career_charter.v0.1.0.json"
 $chainPath = Join-Path $ModulePath "Governance\bonding_events.sample.v0.1.0.json"
 $eventSchemaPath = Join-Path $ModulePath "Governance\oan.bonding_event.v0.1.0.json"
+$operatorManifestPath = Join-Path $ModulePath "Governance\oan.operator_selection_manifest.v0.1.0.json"
 
 $oe = Get-Content -Raw -Encoding utf8 $oePath | ConvertFrom-Json
 $manifest = Get-Content -Raw -Encoding utf8 $manifestPath | ConvertFrom-Json
 $charter = Get-Content -Raw -Encoding utf8 $charterPath | ConvertFrom-Json
 $chain = Get-Content -Raw -Encoding utf8 $chainPath | ConvertFrom-Json
 $eventSchema = Get-Content -Raw -Encoding utf8 $eventSchemaPath | ConvertFrom-Json
+$operatorManifest = Get-Content -Raw -Encoding utf8 $operatorManifestPath | ConvertFrom-Json
 
 $failures = New-Object System.Collections.Generic.List[string]
 
@@ -51,6 +53,20 @@ if ($null -ne $role -and $null -ne $career) {
         if (@($role.allowed_trades) -notcontains [string]$t) { $failures.Add("Enabled trade not allowed by role: $t") }
         if (@($career.allowed_trades) -notcontains [string]$t) { $failures.Add("Enabled trade not allowed by charter: $t") }
     }
+}
+
+# Operator profile reference and denial code catalog
+if (-not ($oe.PSObject.Properties.Name -contains "operator_profile_ref")) {
+    $failures.Add("OE header missing operator_profile_ref")
+}
+elseif ([string]$oe.operator_profile_ref.schema -ne "oan.operator_selection_manifest.v0.1.0") {
+    $failures.Add("OE operator_profile_ref schema mismatch")
+}
+
+$supportedCodes = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::Ordinal)
+foreach ($c in @("ROLE_NOT_ALLOWED","TRADE_NOT_ALLOWED","UNSIGNED_REPO_DENIED","SEAL_ADMISSION_REQUIRED","EXPOSURE_POLICY_WEAKENING_DENIED","TOOL_PERMISSION_OUT_OF_SCOPE")) { [void]$supportedCodes.Add($c) }
+foreach ($c in @($operatorManifest.denial_reason_codes)) {
+    if (-not $supportedCodes.Contains([string]$c)) { $failures.Add("Operator manifest contains unknown denial reason code: $c") }
 }
 
 # Anti-bleed
@@ -112,6 +128,18 @@ if (-not (Test-Path -Path $sidecarVerifyPath -PathType Leaf)) {
     if (-not [bool]$sidecarVerify.pass) { $failures.Add("Governance sidecar verification failed") }
 }
 
+$operatorReportPath = Join-Path $TelemetryDir "operator_selection_report.json"
+if (-not (Test-Path -Path $operatorReportPath -PathType Leaf)) {
+    $failures.Add("Missing operator selection report")
+}
+else {
+    $operatorReport = Get-Content -Raw -Encoding utf8 $operatorReportPath | ConvertFrom-Json
+    if (-not [bool]$operatorReport.pass) { $failures.Add("Operator selection report failed") }
+    foreach ($code in @($operatorReport.denial_reason_codes)) {
+        if (-not $supportedCodes.Contains([string]$code)) { $failures.Add("Unknown denial reason code emitted: $code") }
+    }
+}
+
 $result = [ordered]@{
     schema = "oan.bonding_contract_report.v0.1.0"
     pass = ($failures.Count -eq 0)
@@ -121,6 +149,8 @@ $result = [ordered]@{
       anti_bleed = ($failures | Where-Object { $_ -like "*Anti-bleed*" } | Measure-Object).Count -eq 0
       bonding_chain_monotonic = ($failures | Where-Object { $_ -like "*Sequence*" -or $_ -like "*prev_event_hash*" -or $_ -like "*event_hash*" } | Measure-Object).Count -eq 0
       static_sidecar_verified = ($failures | Where-Object { $_ -like "*sidecar*" } | Measure-Object).Count -eq 0
+      operator_profile_ref_valid = ($failures | Where-Object { $_ -like "*operator_profile_ref*" } | Measure-Object).Count -eq 0
+      operator_denial_reason_codes_valid = ($failures | Where-Object { $_ -like "*denial reason code*" -or $_ -like "*Unknown denial*" } | Measure-Object).Count -eq 0
     }
     failures = @($failures)
 }

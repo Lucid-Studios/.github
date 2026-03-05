@@ -24,6 +24,13 @@
 - bonding_prime_cryptic_separation: True
 - bonding_role_charter_alignment: True
 - bonding_anti_bleed: True
+- operator_manifest_signature_verified: True
+- operator_profile_policy_applied: True
+- operator_hard_override_enforced: True
+- operator_inheritance_deterministic: True
+- operator_denial_reason_codes_valid: True
+- operator_repo_policy_enforced: True
+- operator_seal_admission_enforced: True
 
 ## Coverage Breakdown
 - pos=0 text='The' node= reason=unmapped_stopword eligible=False

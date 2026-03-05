@@ -89,6 +89,7 @@ $scar = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "scar_telemetry
 $coverage = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "token_node_coverage.json") | ConvertFrom-Json
 $sidecarVerify = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "governance_sidecars\\governance_sidecar_verify.json") | ConvertFrom-Json
 $bondingReport = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "bonding_contract_report.json") | ConvertFrom-Json
+$operatorReport = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "operator_selection_report.json") | ConvertFrom-Json
 $constructor = Get-Content -Raw -Encoding utf8 (Join-Path $ModulePath "SymbolicKeyConstructor_ReservedExpanded.json") | ConvertFrom-Json
 $rootBaselinePath = Join-Path $ModulePath "RootIndex.sha256"
 $rootHashCurrent = (Get-FileHash -Algorithm SHA256 (Join-Path $ModulePath "RootIndex.json")).Hash.ToLowerInvariant()
@@ -111,6 +112,13 @@ $checks["bonding_chain_monotonic"] = [bool]$bondingReport.checks.bonding_chain_m
 $checks["bonding_prime_cryptic_separation"] = [bool]$bondingReport.checks.prime_cryptic_separation
 $checks["bonding_role_charter_alignment"] = [bool]$bondingReport.checks.role_charter_alignment
 $checks["bonding_anti_bleed"] = [bool]$bondingReport.checks.anti_bleed
+$checks["operator_manifest_signature_verified"] = [bool]$sidecarVerify.pass
+$checks["operator_profile_policy_applied"] = [bool]$operatorReport.checks.operator_profile_policy_applied
+$checks["operator_hard_override_enforced"] = [bool]$operatorReport.checks.operator_hard_override_enforced
+$checks["operator_inheritance_deterministic"] = [bool]$operatorReport.checks.operator_inheritance_deterministic
+$checks["operator_denial_reason_codes_valid"] = [bool]$operatorReport.checks.operator_denial_reason_codes_valid
+$checks["operator_repo_policy_enforced"] = (-not (@($operatorReport.denial_reason_codes) -contains "UNSIGNED_REPO_DENIED"))
+$checks["operator_seal_admission_enforced"] = (-not (@($operatorReport.denial_reason_codes) -contains "SEAL_ADMISSION_REQUIRED"))
 
 $allPass = $true
 foreach ($v in $checks.Values) { if (-not [bool]$v) { $allPass = $false } }
@@ -136,6 +144,7 @@ $audit = [ordered]@{
     governance = [ordered]@{
         sidecar_pass = [bool]$sidecarVerify.pass
         bonding_pass = [bool]$bondingReport.pass
+        operator_pass = [bool]$operatorReport.pass
     }
 }
 

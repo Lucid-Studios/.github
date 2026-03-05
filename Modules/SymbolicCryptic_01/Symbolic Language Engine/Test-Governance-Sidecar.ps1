@@ -15,7 +15,11 @@ if (-not $Contracts -or $Contracts.Count -eq 0) {
     $Contracts = @(
       (Join-Path $ModulePath "Governance\oan.oe_header.v0.1.0.json"),
       (Join-Path $ModulePath "Governance\oan.role_manifest.v0.1.0.json"),
-      (Join-Path $ModulePath "Governance\oan.career_charter.v0.1.0.json")
+      (Join-Path $ModulePath "Governance\oan.career_charter.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\oan.operator_selection_manifest.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\profile.personal.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\profile.enterprise.v0.1.0.json"),
+      (Join-Path $ModulePath "Governance\profile.government.v0.1.0.json")
     )
 }
 
