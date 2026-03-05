@@ -18,3 +18,33 @@ Modules/Antigravity.exe
 
 # Local indexer scratch output
 OAN Mortalis V1.0/tools/corpus_index/
+
+# OAN runtime infrastructure (must remain outside repository history)
+/runtime/
+/models/
+/SelfGEL/
+/cSelfGEL/
+/GoA/
+/cGoA/
+/OAN Runtime/
+
+# SoulFrame.Actualized MicroVM runtime artifacts (must stay outside repo)
+/microvm/
+/vm/
+/vm_images/
+/soulframe_vm/
+/container_layers/
+/model_runtime/
+/api_service/
+*.qcow2
+*.img
+*.vmdk
+*.vhd
+*.vhdx
+*.gguf
+*.pt
+*.bin
+
+# External CradleTek runtime roots
+/opt/cradletek/
+/OAN Mortalis V1.0/opt/cradletek/

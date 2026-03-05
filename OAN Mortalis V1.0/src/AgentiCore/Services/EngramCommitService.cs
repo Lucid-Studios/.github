@@ -1,58 +1,57 @@
-using CradleTek.Host.Interfaces;
-using OAN.Core.Telemetry;
-using Telemetry.GEL;
+using EngramGovernance.Models;
+using EngramGovernance.Services;
 
 namespace AgentiCore.Services;
 
 public sealed class EngramCommitService
 {
-    private readonly IPublicStore _publicStore;
-    private readonly ICrypticStore _crypticStore;
-    private readonly GelTelemetryAdapter _telemetry;
+    private readonly StewardAgent _stewardAgent;
 
-    public EngramCommitService(
-        IPublicStore publicStore,
-        ICrypticStore crypticStore,
-        GelTelemetryAdapter telemetry)
+    public EngramCommitService(StewardAgent stewardAgent)
     {
-        _publicStore = publicStore;
-        _crypticStore = crypticStore;
-        _telemetry = telemetry;
+        _stewardAgent = stewardAgent;
     }
 
     public async Task CommitAsync(
+        string cmeId,
+        Guid soulFrameId,
         Guid contextId,
-        string payload,
-        bool crypticClassification,
+        string cognitionBody,
+        IReadOnlyDictionary<string, string>? metadata = null,
         CancellationToken cancellationToken = default)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(payload);
+        ArgumentException.ThrowIfNullOrWhiteSpace(cmeId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(cognitionBody);
 
-        var engramNodeId = $"engram-node:{contextId:D}";
-        var relationPointer = $"engram-link:{contextId:D}:operationalizes";
-
-        if (crypticClassification)
+        var metadataBuffer = new Dictionary<string, string>(StringComparer.Ordinal)
         {
-            await _crypticStore.StorePointerAsync(engramNodeId, cancellationToken).ConfigureAwait(false);
-            await _crypticStore.StorePointerAsync(relationPointer, cancellationToken).ConfigureAwait(false);
+            ["source"] = "AgentiCore",
+            ["context"] = contextId.ToString("D"),
+            ["captured_at"] = DateTime.UtcNow.ToString("O")
+        };
+
+        if (metadata is not null)
+        {
+            foreach (var pair in metadata)
+            {
+                if (!string.IsNullOrWhiteSpace(pair.Key) && !string.IsNullOrWhiteSpace(pair.Value))
+                {
+                    metadataBuffer[pair.Key] = pair.Value;
+                }
+            }
         }
-        else
-        {
-            await _publicStore.PublishPointerAsync(engramNodeId, cancellationToken).ConfigureAwait(false);
-            await _publicStore.PublishPointerAsync(relationPointer, cancellationToken).ConfigureAwait(false);
-        }
 
-        var telemetryEvent = new AgentiTelemetryEvent
+        var candidate = new EngramCandidate
         {
-            EventHash = ComputeHash($"{contextId:D}|commit|{crypticClassification}|{payload}"),
+            CandidateId = Guid.NewGuid(),
+            CMEId = cmeId,
+            SoulFrameId = soulFrameId,
+            ContextId = contextId,
+            CognitionBody = cognitionBody,
+            Metadata = metadataBuffer,
             Timestamp = DateTime.UtcNow
         };
-        await _telemetry.AppendAsync(telemetryEvent, "engram-commit").ConfigureAwait(false);
-    }
 
-    private static string ComputeHash(string value)
-    {
-        var bytes = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(value));
-        return Convert.ToHexString(bytes).ToLowerInvariant();
+        await _stewardAgent.ProcessCandidateAsync(candidate, cancellationToken).ConfigureAwait(false);
     }
 }

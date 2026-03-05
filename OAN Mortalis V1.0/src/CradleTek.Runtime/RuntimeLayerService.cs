@@ -1,5 +1,6 @@
 using AgentiCore.Models;
 using AgentiCore.Services;
+using CradleTek.CognitionHost.Interfaces;
 using CradleTek.Host.Interfaces;
 using SoulFrame.Identity.Services;
 
@@ -8,23 +9,26 @@ namespace CradleTek.Runtime;
 public sealed class RuntimeLayerService : IRuntimeService
 {
     private readonly SoulFrameRegistry _soulFrameRegistry;
+    private readonly ICognitionEngine _cognitionEngine;
     private readonly AgentiCore.Services.AgentiCore _agentiCore;
     private readonly Dictionary<Guid, AgentiContext> _activeContexts = [];
 
     public RuntimeLayerService(
         SoulFrameRegistry soulFrameRegistry,
+        ICognitionEngine cognitionEngine,
         AgentiCore.Services.AgentiCore agentiCore)
     {
         _soulFrameRegistry = soulFrameRegistry;
+        _cognitionEngine = cognitionEngine;
         _agentiCore = agentiCore;
     }
 
     public string ContainerName => "RuntimeLayer";
     public string OanService => "OAN";
 
-    public Task InitializeAsync(CancellationToken cancellationToken = default)
+    public async Task InitializeAsync(CancellationToken cancellationToken = default)
     {
-        return Task.CompletedTask;
+        await _cognitionEngine.InitializeAsync(cancellationToken).ConfigureAwait(false);
     }
 
     public Task ActivateSoulFrameAsync(SoulFrame.Identity.Models.SoulFrame soulFrame, CancellationToken cancellationToken = default)

@@ -1,10 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\CradleTek.CognitionHost\CradleTek.CognitionHost.csproj" />
     <ProjectReference Include="..\CradleTek.Host\CradleTek.Host.csproj" />
+    <ProjectReference Include="..\CradleTek.Memory\CradleTek.Memory.csproj" />
+    <ProjectReference Include="..\EngramGovernance\EngramGovernance.csproj" />
+    <ProjectReference Include="..\GEL\GEL.csproj" />
     <ProjectReference Include="..\OAN.Core\OAN.Core.csproj" />
     <ProjectReference Include="..\SoulFrame.Identity\SoulFrame.Identity.csproj" />
     <ProjectReference Include="..\Telemetry.GEL\Telemetry.GEL.csproj" />
+    <ProjectReference Include="..\SLI.Ingestion\SLI.Ingestion.csproj" />
+    <ProjectReference Include="..\SoulFrame.Host\SoulFrame.Host.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

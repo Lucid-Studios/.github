@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Oan.Sli\Oan.Sli.csproj" />
     <ProjectReference Include="..\..\src\SLI.Engine\SLI.Engine.csproj" />
+    <ProjectReference Include="..\..\src\SLI.Ingestion\SLI.Ingestion.csproj" />
   </ItemGroup>
 
 </Project>
