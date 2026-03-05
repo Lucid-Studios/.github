@@ -28,8 +28,7 @@
         "target": "entity_id",
         "op": "STATE",
         "value": "string",
-        "value_symbol": "string (optional; from RootIndex or OperatorIndex)",
-        "confidence": "x/y/z fractional string (optional)"
+        "value_symbol": "string (optional; from RootIndex or OperatorIndex)"
       }
     },
     "events": {
@@ -41,8 +40,7 @@
         "verb_symbol": "string (optional; from RootIndex)",
         "agent": "entity_id",
         "target": "entity_id (optional)",
-        "instrument": "entity_id (optional)",
-        "mode": "x/y/z fractional string (optional)"
+        "instrument": "entity_id (optional)"
       }
     },
     "relations": {
@@ -62,9 +60,17 @@
       "fields": {
         "tense": "past | present | future | mixed",
         "modality": "assert | query | imperative | conditional",
-        "evidential": "observed | reported | inferred | assumed (optional)",
-        "temporal_mode": "x/y/z fractional string (optional)",
-        "context_mode": "x/y/z fractional string (optional)"
+        "evidential": "observed | reported | inferred | assumed (optional)"
+      }
+    },
+    "metadata": {
+      "optional": true,
+      "fractional_encoding": "x/y/z triplets allowed only in metadata fields",
+      "fields": {
+        "confidence": "x/y/z (optional)",
+        "event_mode": "x/y/z (optional)",
+        "temporal_mode": "x/y/z (optional)",
+        "context_mode": "x/y/z (optional)"
       }
     }
   },
@@ -80,8 +86,7 @@
           {
             "target": "e2",
             "op": "STATE",
-            "value": "burning",
-            "confidence": "1/0/0"
+            "value": "burning"
           }
         ],
         "events": [
@@ -90,8 +95,7 @@
             "op": "ACT",
             "verb": "enter",
             "agent": "e1",
-            "target": "e2",
-            "mode": "0/1/0"
+            "target": "e2"
           }
         ],
         "relations": [
@@ -100,8 +104,13 @@
         ],
         "scope": {
           "tense": "past",
-          "modality": "assert",
-          "temporal_mode": "1/0/0"
+          "modality": "assert"
+        },
+        "metadata": {
+          "confidence": "1/0/0",
+          "event_mode": "0/1/0",
+          "temporal_mode": "1/0/0",
+          "context_mode": "1/1/0"
         }
       }
     },
