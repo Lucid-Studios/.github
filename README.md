@@ -21,23 +21,23 @@ The OAN Mortalus stack implements a layered cognition runtime designed for deter
 
 Architecture overview:
 ```mermaid
-    flowchart TB
+flowchart TB
 
 OP[Operator / Developer]
 
-subgraph Cognition
+subgraph Cognition Layer
 AC[AgentiCore™<br>(Cognition Runtime)]
 end
 
-subgraph Symbolic
+subgraph Symbolic Layer
 SLI[SLI Engine<br>(Symbolic Language Interface)]
 end
 
-subgraph Identity
+subgraph Identity Layer
 SF[SoulFrame™<br>(Identity Infrastructure)]
 end
 
-subgraph Host
+subgraph Runtime Host
 CT[CradleTek™<br>(Headless Runtime Host)]
 end
 
