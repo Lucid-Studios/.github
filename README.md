@@ -1,8 +1,8 @@
 graph TD
-Operator --> AgentiCore
-AgentiCore --> SLI
-SLI --> SoulFrame
-SoulFrame --> CradleTek
+  Operator[Operator / Developer] --> AgentiCore[AgentiCore™]
+  AgentiCore --> SLI[SLI Engine]
+  SLI --> SoulFrame[SoulFrame™]
+  SoulFrame --> CradleTek[CradleTek™]
 
 # 🧬 Lucid Studios
 
