@@ -20,21 +20,28 @@ Lucid Studios maintains the research and engineering repositories supporting the
 The OAN Mortalus stack implements a layered cognition runtime designed for deterministic orchestration, symbolic reasoning, and modular identity infrastructure.
 
 Architecture overview:
+```mermaid
+    flowchart TB
+  OP[Operator / Developer]
 
-    Operator / Developer
-            ↓
-       AgentiCore™
-     (Cognition Runtime)
-            ↓
-       SLI Engine
- (Symbolic Language Interface)
-            ↓
-       SoulFrame™
-   (Identity Infrastructure)
-            ↓
-        CradleTek™
-   (Headless Runtime Host)
+  subgraph Cognition
+    AC[AgentiCore™\n(Cognition Runtime)]
+  end
 
+  subgraph Symbolic
+    SLI[SLI Engine\n(Symbolic Language Interface)]
+  end
+
+  subgraph Identity
+    SF[SoulFrame™\n(Identity Infrastructure)]
+  end
+
+  subgraph Host
+    CT[CradleTek™\n(Headless Runtime Host)]
+  end
+
+  OP --> AC --> SLI --> SF --> CT
+```
 ---
 
 ## Core Stack Components
