@@ -90,6 +90,9 @@ $coverage = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "token_node
 $sidecarVerify = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "governance_sidecars\\governance_sidecar_verify.json") | ConvertFrom-Json
 $bondingReport = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "bonding_contract_report.json") | ConvertFrom-Json
 $operatorReport = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "operator_selection_report.json") | ConvertFrom-Json
+$firstBootReport = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "first_boot_report.json") | ConvertFrom-Json
+$operatorBondingReport = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "operator_bonding_report.json") | ConvertFrom-Json
+$reentryReport = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "continuous_use_reentry_report.json") | ConvertFrom-Json
 $constructor = Get-Content -Raw -Encoding utf8 (Join-Path $ModulePath "SymbolicKeyConstructor_ReservedExpanded.json") | ConvertFrom-Json
 $rootBaselinePath = Join-Path $ModulePath "RootIndex.sha256"
 $rootHashCurrent = (Get-FileHash -Algorithm SHA256 (Join-Path $ModulePath "RootIndex.json")).Hash.ToLowerInvariant()
@@ -119,6 +122,18 @@ $checks["operator_inheritance_deterministic"] = [bool]$operatorReport.checks.ope
 $checks["operator_denial_reason_codes_valid"] = [bool]$operatorReport.checks.operator_denial_reason_codes_valid
 $checks["operator_repo_policy_enforced"] = (-not (@($operatorReport.denial_reason_codes) -contains "UNSIGNED_REPO_DENIED"))
 $checks["operator_seal_admission_enforced"] = (-not (@($operatorReport.denial_reason_codes) -contains "SEAL_ADMISSION_REQUIRED"))
+$checks["founding_constitution_witness"] = ([bool]$firstBootReport.pass -and [bool]$firstBootReport.sanctuary_constituted)
+$checks["bonded_operator_continuity"] = [bool]$operatorBondingReport.pass
+$checks["reentry_replay_integrity"] = [bool]$reentryReport.pass
+$policyCodesFirst = @($firstBootReport.denial_reason_codes) | Where-Object { $_ -like "POLICY_*" }
+$policyCodesReentry = @($reentryReport.denial_reason_codes) | Where-Object { $_ -like "POLICY_*" }
+$checks["anti_downgrade_enforced"] = ((@($policyCodesFirst) | Measure-Object).Count -eq 0 -and (@($policyCodesReentry) | Measure-Object).Count -eq 0)
+$allDenialCodes = @()
+$allDenialCodes += @($firstBootReport.denial_reason_codes)
+$allDenialCodes += @($operatorBondingReport.denial_reason_codes)
+$allDenialCodes += @($reentryReport.denial_reason_codes)
+$invalidNamespaceCodes = @($allDenialCodes | Where-Object { $_ -notmatch '^(FOUNDING|BONDING|REENTRY|POLICY)_' })
+$checks["denial_namespace_valid"] = ((@($invalidNamespaceCodes) | Measure-Object).Count -eq 0)
 
 $allPass = $true
 foreach ($v in $checks.Values) { if (-not [bool]$v) { $allPass = $false } }
@@ -145,6 +160,9 @@ $audit = [ordered]@{
         sidecar_pass = [bool]$sidecarVerify.pass
         bonding_pass = [bool]$bondingReport.pass
         operator_pass = [bool]$operatorReport.pass
+        founding_pass = [bool]$firstBootReport.pass
+        operator_bonding_pass = [bool]$operatorBondingReport.pass
+        reentry_pass = [bool]$reentryReport.pass
     }
 }
 

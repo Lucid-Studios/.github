@@ -25,6 +25,8 @@ $charter = Get-Content -Raw -Encoding utf8 $charterPath | ConvertFrom-Json
 $chain = Get-Content -Raw -Encoding utf8 $chainPath | ConvertFrom-Json
 $eventSchema = Get-Content -Raw -Encoding utf8 $eventSchemaPath | ConvertFrom-Json
 $operatorManifest = Get-Content -Raw -Encoding utf8 $operatorManifestPath | ConvertFrom-Json
+$foundingEventPath = Join-Path $ModulePath "Governance\oan.sanctuary_founding_event.v0.1.0.json"
+$foundingEvent = Get-Content -Raw -Encoding utf8 $foundingEventPath | ConvertFrom-Json
 
 $failures = New-Object System.Collections.Generic.List[string]
 
@@ -64,10 +66,18 @@ elseif ([string]$oe.operator_profile_ref.schema -ne "oan.operator_selection_mani
 }
 
 $supportedCodes = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::Ordinal)
-foreach ($c in @("ROLE_NOT_ALLOWED","TRADE_NOT_ALLOWED","UNSIGNED_REPO_DENIED","SEAL_ADMISSION_REQUIRED","EXPOSURE_POLICY_WEAKENING_DENIED","TOOL_PERMISSION_OUT_OF_SCOPE")) { [void]$supportedCodes.Add($c) }
+foreach ($c in @(
+    "ROLE_NOT_ALLOWED","TRADE_NOT_ALLOWED","UNSIGNED_REPO_DENIED","SEAL_ADMISSION_REQUIRED","EXPOSURE_POLICY_WEAKENING_DENIED","TOOL_PERMISSION_OUT_OF_SCOPE",
+    "FOUNDING_UNFORMED_REQUIRED","FOUNDING_CONSTITUTION_INCOMPLETE","BONDING_PROFILE_MISMATCH","REENTRY_CHAIN_HEAD_MISMATCH",
+    "POLICY_PROFILE_CONSTRAINT_WEAKENING_DENIED","POLICY_PROTECTION_DEPTH_WEAKENING_DENIED","POLICY_SEAL_STRICTNESS_WEAKENING_DENIED","POLICY_ANTIBLEED_WEAKENING_DENIED"
+)) { [void]$supportedCodes.Add($c) }
 foreach ($c in @($operatorManifest.denial_reason_codes)) {
     if (-not $supportedCodes.Contains([string]$c)) { $failures.Add("Operator manifest contains unknown denial reason code: $c") }
 }
+
+# Lawful order gate
+if (-not [bool]$foundingEvent.sanctuary_constituted) { $failures.Add("Role instantiation blocked: sanctuary_constituted=false") }
+if (-not [bool]$foundingEvent.runtime_ready) { $failures.Add("Role instantiation blocked: runtime_ready=false") }
 
 # Anti-bleed
 $ab = $manifest.anti_bleed
@@ -140,6 +150,42 @@ else {
     }
 }
 
+$firstBootReportPath = Join-Path $TelemetryDir "first_boot_report.json"
+if (-not (Test-Path -Path $firstBootReportPath -PathType Leaf)) {
+    $failures.Add("Missing first boot report")
+}
+else {
+    $firstBootReport = Get-Content -Raw -Encoding utf8 $firstBootReportPath | ConvertFrom-Json
+    if (-not [bool]$firstBootReport.pass) { $failures.Add("First boot report failed") }
+    foreach ($code in @($firstBootReport.denial_reason_codes)) {
+        if (-not $supportedCodes.Contains([string]$code)) { $failures.Add("Unknown denial reason code emitted: $code") }
+    }
+}
+
+$operatorBondingReportPath = Join-Path $TelemetryDir "operator_bonding_report.json"
+if (-not (Test-Path -Path $operatorBondingReportPath -PathType Leaf)) {
+    $failures.Add("Missing operator bonding report")
+}
+else {
+    $operatorBondingReport = Get-Content -Raw -Encoding utf8 $operatorBondingReportPath | ConvertFrom-Json
+    if (-not [bool]$operatorBondingReport.pass) { $failures.Add("Operator bonding report failed") }
+    foreach ($code in @($operatorBondingReport.denial_reason_codes)) {
+        if (-not $supportedCodes.Contains([string]$code)) { $failures.Add("Unknown denial reason code emitted: $code") }
+    }
+}
+
+$reentryReportPath = Join-Path $TelemetryDir "continuous_use_reentry_report.json"
+if (-not (Test-Path -Path $reentryReportPath -PathType Leaf)) {
+    $failures.Add("Missing continuous use reentry report")
+}
+else {
+    $reentryReport = Get-Content -Raw -Encoding utf8 $reentryReportPath | ConvertFrom-Json
+    if (-not [bool]$reentryReport.pass) { $failures.Add("Continuous use reentry report failed") }
+    foreach ($code in @($reentryReport.denial_reason_codes)) {
+        if (-not $supportedCodes.Contains([string]$code)) { $failures.Add("Unknown denial reason code emitted: $code") }
+    }
+}
+
 $result = [ordered]@{
     schema = "oan.bonding_contract_report.v0.1.0"
     pass = ($failures.Count -eq 0)
@@ -151,6 +197,9 @@ $result = [ordered]@{
       static_sidecar_verified = ($failures | Where-Object { $_ -like "*sidecar*" } | Measure-Object).Count -eq 0
       operator_profile_ref_valid = ($failures | Where-Object { $_ -like "*operator_profile_ref*" } | Measure-Object).Count -eq 0
       operator_denial_reason_codes_valid = ($failures | Where-Object { $_ -like "*denial reason code*" -or $_ -like "*Unknown denial*" } | Measure-Object).Count -eq 0
+      founding_constitution_witness = ($failures | Where-Object { $_ -like "*sanctuary_constituted*" -or $_ -like "*first boot*" } | Measure-Object).Count -eq 0
+      bonded_operator_continuity = ($failures | Where-Object { $_ -like "*bonding report*" } | Measure-Object).Count -eq 0
+      reentry_replay_integrity = ($failures | Where-Object { $_ -like "*reentry report*" } | Measure-Object).Count -eq 0
     }
     failures = @($failures)
 }

@@ -12,6 +12,34 @@
     "schema": "oan.operator_selection_manifest.v0.1.0",
     "access_tier": "prime"
   },
+  "operator_identity_record_ref": {
+    "store": "selfgel",
+    "locator": "Governance/oan.operator_identity_record.v0.1.0.json",
+    "sha256": "sha256:operator_identity_placeholder",
+    "schema": "oan.operator_identity_record.v0.1.0",
+    "access_tier": "prime"
+  },
+  "operator_bonding_set_ref": {
+    "store": "selfgel",
+    "locator": "Governance/oan.operator_bonding_set.v0.1.0.json",
+    "sha256": "sha256:operator_bonding_set_placeholder",
+    "schema": "oan.operator_bonding_set.v0.1.0",
+    "access_tier": "prime"
+  },
+  "founding_event_ref": {
+    "store": "selfgel",
+    "locator": "Governance/oan.sanctuary_founding_event.v0.1.0.json",
+    "sha256": "sha256:founding_event_placeholder",
+    "schema": "oan.sanctuary_founding_event.v0.1.0",
+    "access_tier": "prime"
+  },
+  "continuous_use_reentry_ref": {
+    "store": "selfgel",
+    "locator": "Governance/oan.continuous_use_reentry.v0.1.0.json",
+    "sha256": "sha256:reentry_policy_placeholder",
+    "schema": "oan.continuous_use_reentry.v0.1.0",
+    "access_tier": "prime"
+  },
   "activation_selectors": {
     "active_career_id": "career.steward",
     "active_job_id": "job.sanctuary_watch",
