@@ -1,0 +1,4 @@
+﻿{
+  "schema": "oan.sidecar.hash.v0.1.0",
+  "required": ["artifact_path", "artifact_schema", "artifact_sha256", "canonicalization", "created_by", "created_at"]
+}

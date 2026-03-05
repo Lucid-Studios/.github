@@ -304,6 +304,7 @@ Domain sheaf + glue map assets:
 3. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\DomainSheaves\package.medicine.cardiology.v0.1.0.json`
 4. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\DomainSheaves\package.medicine.pharmacology.v0.1.0.json`
 5. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\DomainSheaves\glue.map.medicine_cardiology_pharm.v0.1.0.json`
+
 # License
 
 This archive is released under the
@@ -313,3 +314,38 @@ This archive is released under the
 No commercial use, modification, or redistribution is permitted without express written permission.
 
 Trademark usage without authorization is strictly prohibited.
+
+## Phase 3 Audit + Governance + Training
+
+Audit and determinism gate:
+
+1. `powershell -ExecutionPolicy Bypass -File "D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\Invoke-SLE-Audit.ps1"`
+
+Coverage diagnostics:
+
+1. `powershell -ExecutionPolicy Bypass -File "D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\Test-TokenNodeCoverage.ps1" -MinCoverage 0.70`
+
+Governance dry-run:
+
+1. `powershell -ExecutionPolicy Bypass -File "D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\Invoke-Governance-DryRun.ps1"`
+
+SCAR adapter conformance:
+
+1. `powershell -ExecutionPolicy Bypass -File "D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\Test-SCAR-Conformance.ps1"`
+
+Training gate:
+
+1. `powershell -ExecutionPolicy Bypass -File "D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\Invoke-Training-Gate.ps1"`
+
+Additional telemetry outputs:
+
+1. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\token_node_coverage.json`
+2. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\scar_conformance.json`
+3. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\governance_boot_dryrun.json`
+4. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\training_gate_report.json`
+5. `D:\OAN Tech Stack\Modules\SymbolicCryptic_01\Symbolic Language Engine\telemetry\audit_report.json`
+
+Tracked reports:
+
+1. `D:\OAN Tech Stack\docs\audits\PHASE2_AUDIT.md`
+2. `D:\OAN Tech Stack\docs\audits\TRAINING_GATE_REPORT.md`

@@ -1,0 +1,69 @@
+﻿{
+  "schema": "oan.oe_header.v0.1.0",
+  "session_id": "sanctuary-seed-session-001",
+  "policy_version": "v0.1.0",
+  "prime_commit_hash": "sha256:prime_commit_placeholder",
+  "cryptic_commit_hash": "sha256:cryptic_commit_placeholder",
+  "chain_head_hash": "sha256:bonding_chain_head_placeholder",
+  "operator_profile_ref": {
+    "store": "selfgel",
+    "locator": "Governance/oan.operator_selection_manifest.v0.1.0.json",
+    "sha256": "sha256:operator_manifest_placeholder",
+    "schema": "oan.operator_selection_manifest.v0.1.0",
+    "access_tier": "prime"
+  },
+  "activation_selectors": {
+    "active_career_id": "career.steward",
+    "active_job_id": "job.sanctuary_watch",
+    "enabled_trades": [
+      "trade.audit",
+      "trade.telemetry",
+      "trade.security_sentinel"
+    ],
+    "capability_lease_profile": "lease_profile.seed_default",
+    "policy_profile": "policy.prime_pointer_only",
+    "domain_sheaf_packages": [
+      "medicine.cardiology",
+      "medicine.pharmacology",
+      "physics.mechanics"
+    ],
+    "attached_repo_classes": [
+      "internal",
+      "verified_external"
+    ],
+    "unsigned_repo_count": 0
+  },
+  "exposure_policy": {
+    "prime_mode": "pointer_only_cryptic",
+    "cryptic_payload_in_prime_forbidden": true
+  },
+  "seal_admission": {
+    "seal_present": true,
+    "seal_id": "sanctuary-dev-seal-001"
+  },
+  "prime_refs": [
+    {
+      "store": "selfgel",
+      "locator": "profiles/prime_summary/session_001.json",
+      "sha256": "sha256:prime_ref_placeholder",
+      "schema": "gel.sheaf.v0.2.0",
+      "access_tier": "prime"
+    }
+  ],
+  "cryptic_refs": [
+    {
+      "store": "cselfgel",
+      "locator": "sealed/session_001/cryptic_trace.cid",
+      "sha256": "sha256:cryptic_ref_placeholder",
+      "schema": "sli.cryptic.trace.v0.1.0",
+      "access_tier": "cryptic"
+    }
+  ],
+  "cert_registry_ref": {
+    "store": "cert_registry",
+    "locator": "tsa/capabilities/steward_profile_001.json",
+    "sha256": "sha256:tsa_ref_placeholder",
+    "schema": "tsa.capability.registry.v0.1.0",
+    "access_tier": "prime"
+  }
+}
