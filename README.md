@@ -25,19 +25,27 @@ flowchart TB
   OP["Operator / Developer"]
 
   subgraph "Cognition"
-    AC["AgentiCore™ (Cognition Runtime)"]
+    AC["AgentiCore™"]
+    ACd["Cognition Runtime"]
+    AC -.-> ACd
   end
 
   subgraph "Symbolic"
-    SLI["SLI Engine (Symbolic Language Interface)"]
+    SLI["SLI Engine"]
+    SLId["Symbolic Language Interface"]
+    SLI -.-> SLId
   end
 
   subgraph "Identity"
-    SF["SoulFrame™ (Identity Infrastructure)"]
+    SF["SoulFrame™"]
+    SFd["Identity Infrastructure"]
+    SF -.-> SFd
   end
 
   subgraph "Host"
-    CT["CradleTek™ (Headless Runtime Host)"]
+    CT["CradleTek™"]
+    CTd["Headless Runtime Host"]
+    CT -.-> CTd
   end
 
   OP --> AC --> SLI --> SF --> CT
