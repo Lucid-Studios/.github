@@ -19,6 +19,11 @@
 - glue_isolation: True
 - coverage_report_present: True
 - coverage_target: True
+- governance_sidecar_verification: True
+- bonding_chain_monotonic: True
+- bonding_prime_cryptic_separation: True
+- bonding_role_charter_alignment: True
+- bonding_anti_bleed: True
 
 ## Coverage Breakdown
 - pos=0 text='The' node= reason=unmapped_stopword eligible=False

@@ -1,7 +1,8 @@
 ﻿[CmdletBinding()]
 param(
     [string]$ModulePath,
-    [string]$RepoRoot
+    [string]$RepoRoot,
+    [switch]$StrictReservedKeyCheck
 )
 
 Set-StrictMode -Version Latest
@@ -60,7 +61,7 @@ $artifacts = @(
 Get-ChildItem -Path $telemetryDir -Filter *.json -File | Remove-Item -Force
 
 $buildScript = Join-Path $ModulePath "build.ps1"
-& $buildScript -StrictReservedKeyCheck
+& $buildScript -StrictReservedKeyCheck:$StrictReservedKeyCheck
 if ($LASTEXITCODE -ne 0) { Write-Error "Build failed during audit run #1"; exit $LASTEXITCODE }
 
 $run1 = @{}
@@ -70,7 +71,7 @@ foreach ($a in $artifacts) {
     $run1[$a] = Get-NormalizedJsonHash $p
 }
 
-& $buildScript -StrictReservedKeyCheck
+& $buildScript -StrictReservedKeyCheck:$StrictReservedKeyCheck
 if ($LASTEXITCODE -ne 0) { Write-Error "Build failed during audit run #2"; exit $LASTEXITCODE }
 
 $run2 = @{}
@@ -86,6 +87,8 @@ $flow = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "flow_metrics.j
 $cognition = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "cognition_telemetry.json") | ConvertFrom-Json
 $scar = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "scar_telemetry.json") | ConvertFrom-Json
 $coverage = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "token_node_coverage.json") | ConvertFrom-Json
+$sidecarVerify = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "governance_sidecars\\governance_sidecar_verify.json") | ConvertFrom-Json
+$bondingReport = Get-Content -Raw -Encoding utf8 (Join-Path $telemetryDir "bonding_contract_report.json") | ConvertFrom-Json
 $constructor = Get-Content -Raw -Encoding utf8 (Join-Path $ModulePath "SymbolicKeyConstructor_ReservedExpanded.json") | ConvertFrom-Json
 $rootBaselinePath = Join-Path $ModulePath "RootIndex.sha256"
 $rootHashCurrent = (Get-FileHash -Algorithm SHA256 (Join-Path $ModulePath "RootIndex.json")).Hash.ToLowerInvariant()
@@ -103,6 +106,11 @@ $checks["telemetry_layer_placeholders"] = ($cognition.metrics.layer_1.semantic_f
 $checks["glue_isolation"] = (-not (($scar.glue_mappings_active -eq 0) -and ($scar.scope_barrier_overrides -gt 0)))
 $checks["coverage_report_present"] = ($null -ne $coverage -and $null -ne $coverage.tokens)
 $checks["coverage_target"] = ([double]$coverage.coverage_rate -ge 0.70)
+$checks["governance_sidecar_verification"] = [bool]$sidecarVerify.pass
+$checks["bonding_chain_monotonic"] = [bool]$bondingReport.checks.bonding_chain_monotonic
+$checks["bonding_prime_cryptic_separation"] = [bool]$bondingReport.checks.prime_cryptic_separation
+$checks["bonding_role_charter_alignment"] = [bool]$bondingReport.checks.role_charter_alignment
+$checks["bonding_anti_bleed"] = [bool]$bondingReport.checks.anti_bleed
 
 $allPass = $true
 foreach ($v in $checks.Values) { if (-not [bool]$v) { $allPass = $false } }
@@ -124,6 +132,10 @@ $audit = [ordered]@{
         maps_loaded = $scar.glue_maps_loaded
         mappings_active = $scar.glue_mappings_active
         scope_barrier_overrides = $scar.scope_barrier_overrides
+    }
+    governance = [ordered]@{
+        sidecar_pass = [bool]$sidecarVerify.pass
+        bonding_pass = [bool]$bondingReport.pass
     }
 }
 

@@ -43,4 +43,25 @@ if (-not (Test-Path -Path $governanceScriptPath -PathType Leaf)) {
 & $governanceScriptPath -ModulePath $PSScriptRoot -OutDir (Join-Path $PSScriptRoot "telemetry")
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+$sidecarGenScript = Join-Path $PSScriptRoot "New-Governance-Sidecar.ps1"
+if (-not (Test-Path -Path $sidecarGenScript -PathType Leaf)) {
+    throw "Missing governance sidecar generation script: $sidecarGenScript"
+}
+& $sidecarGenScript -ModulePath $PSScriptRoot -SidecarOutDir (Join-Path $PSScriptRoot "telemetry\\governance_sidecars")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+$sidecarVerifyScript = Join-Path $PSScriptRoot "Test-Governance-Sidecar.ps1"
+if (-not (Test-Path -Path $sidecarVerifyScript -PathType Leaf)) {
+    throw "Missing governance sidecar verification script: $sidecarVerifyScript"
+}
+& $sidecarVerifyScript -ModulePath $PSScriptRoot -SidecarOutDir (Join-Path $PSScriptRoot "telemetry\\governance_sidecars")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+$bondingContractScript = Join-Path $PSScriptRoot "Test-Bonding-Contract.ps1"
+if (-not (Test-Path -Path $bondingContractScript -PathType Leaf)) {
+    throw "Missing bonding contract test script: $bondingContractScript"
+}
+& $bondingContractScript -ModulePath $PSScriptRoot -TelemetryDir (Join-Path $PSScriptRoot "telemetry") -SidecarOutDir (Join-Path $PSScriptRoot "telemetry\\governance_sidecars")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 exit 0
