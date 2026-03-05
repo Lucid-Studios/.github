@@ -72,6 +72,15 @@
         "temporal_mode": "x/y/z (optional)",
         "context_mode": "x/y/z (optional)"
       }
+    },
+    "token_map": {
+      "optional": true,
+      "description": "Optional explicit token span to node mapping used by SCAR T2N. Precedence: token_map over heuristic mapping.",
+      "items": {
+        "start": "integer token index (inclusive)",
+        "end": "integer token index (inclusive)",
+        "node_ref": "entity/event/state id"
+      }
     }
   },
   "examples": {
@@ -111,7 +120,13 @@
           "event_mode": "0/1/0",
           "temporal_mode": "1/0/0",
           "context_mode": "1/1/0"
-        }
+        },
+        "token_map": [
+          { "start": 1, "end": 1, "node_ref": "e1" },
+          { "start": 2, "end": 2, "node_ref": "ev1" },
+          { "start": 4, "end": 4, "node_ref": "st1" },
+          { "start": 5, "end": 5, "node_ref": "e2" }
+        ]
       }
     },
     "decode": {
