@@ -1,9 +1,0 @@
-﻿{
-  "schema": "gel.sheaf_package.v0.1.0",
-  "domain": "compliance",
-  "specialization": "regulatory",
-  "inherits": ["core", "compliance"],
-  "relations": ["REQUIRES", "VIOLATION_CAUSES", "REFERS_TO"],
-  "operators": ["REGULATION_EVENT", "ACT"],
-  "glue": ["glue.map.law_contracts_compliance_regulatory.v0.1.0"]
-}

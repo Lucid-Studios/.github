@@ -1,8 +1,0 @@
-﻿{
-  "schema": "sli.scar.head_gate.v0.1.0",
-  "description": "Conceptual head-family gate levels from sheaf structure.",
-  "required": [
-    "schema",
-    "gates"
-  ]
-}

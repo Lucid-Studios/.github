@@ -1,8 +1,0 @@
-﻿{
-  "schema": "sli.scar.kv_anchor.v0.1.0",
-  "description": "KV anchor persistence policy descriptor for sheaf nodes.",
-  "required": [
-    "schema",
-    "anchors"
-  ]
-}

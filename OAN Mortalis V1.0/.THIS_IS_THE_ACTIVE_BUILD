@@ -1,4 +1,0 @@
-Solution: Oan.sln
-Expected build command: dotnet build Oan.sln
-Notice: Do not modify OAN Mortalis V0.1 Archive. Refer to Build Contracts/ for truth.
-Rules: See docs/WORKSPACE_RULES.md

@@ -1,6 +1,0 @@
-{
-  "model_path": "%CRADLETEK_RUNTIME_ROOT%\\models\\seed.gguf",
-  "inference_port": 8181,
-  "max_context": 2048,
-  "telemetry_enabled": true
-}

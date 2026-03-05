@@ -1,5 +1,0 @@
-(oan.intent
-  (id "llm-stub-1")
-  (sli "public/oan/move.commit")
-  (kind "MoveTo")
-  (args (x 50) (y -10)))

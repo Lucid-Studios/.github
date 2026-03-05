@@ -1,9 +1,0 @@
-﻿{
-  "schema": "gel.sheaf_package.v0.1.0",
-  "domain": "physics",
-  "specialization": "mechanics",
-  "inherits": ["core", "physics"],
-  "relations": ["FORCE_ON", "MOTION_CAUSES", "BEFORE"],
-  "operators": ["DYNAMICS_EVENT", "ACT"],
-  "glue": ["glue.map.physics_mech_engineering_systems.v0.1.0"]
-}

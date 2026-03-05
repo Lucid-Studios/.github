@@ -1,2 +1,0 @@
-This is not an IR string. It is just prose.
-The parser should reject this with BRIDGE.PROSE_INPUT.
