@@ -1,0 +1,55 @@
+name: Repository Standards
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  standards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check repository baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          missing=0
+
+          if [ ! -f README.md ]; then
+            echo "::error::Missing README.md"
+            missing=1
+          fi
+
+          if [ ! -f SECURITY.md ] && [ ! -f .github/SECURITY.md ]; then
+            echo "::warning::No local SECURITY.md found; repository may rely on org default."
+          fi
+
+          if [ ! -f CONTRIBUTING.md ] && [ ! -f .github/CONTRIBUTING.md ]; then
+            echo "::warning::No local CONTRIBUTING.md found; repository may rely on org default."
+          fi
+
+          if git ls-files | grep -E '(^|/).*(private\.key|id_rsa|id_ed25519|\.pfx|\.pem)$' >/dev/null 2>&1; then
+            echo "::error::Possible private key or certificate material is committed."
+            missing=1
+          fi
+
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Upload standards summary
+        shell: bash
+        run: |
+          {
+            echo "## Repository Standards"
+            echo ""
+            echo "- README present"
+            echo "- Local security and contributing guidance checked"
+            echo "- Obvious private key filename patterns checked"
+          } >> "$GITHUB_STEP_SUMMARY"

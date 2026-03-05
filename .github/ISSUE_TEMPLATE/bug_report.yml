@@ -1,0 +1,41 @@
+name: Shared workflow or policy bug
+description: Report a defect in Lucid Studios shared templates, governance docs, or reusable workflows.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the problem and the shared asset it affects.
+    validations:
+      required: true
+  - type: textarea
+    id: affected
+    attributes:
+      label: Affected scope
+      description: List the repository, workflow, template, or standards document affected.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Provide steps, logs, screenshots, or workflow links.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Reusable workflow
+        - Issue or PR template
+        - Security guidance
+        - Contributing guidance
+        - Profile content
+        - Policy document
+        - Other
+    validations:
+      required: true

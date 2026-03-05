@@ -1,11 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: OAN Tech Stack Issues
-    url: https://github.com/Lucid-Studios/Oan-Tech-Stack/issues
-    about: Report project-specific issues in the Oan-Tech-Stack repository.
-  - name: OAN Tech Stack Pull Requests
-    url: https://github.com/Lucid-Studios/Oan-Tech-Stack/pulls
-    about: Open or review pull requests in the Oan-Tech-Stack repository.
-  - name: Security Reporting Guidance
-    url: https://github.com/Lucid-Studios/Oan-Tech-Stack/blob/main/SECURITY.md
-    about: Follow the published guidance for security-sensitive disclosures.
+  - name: Project-specific issue tracker
+    url: https://github.com/orgs/Lucid-Studios/repositories
+    about: Use the target project repository for product bugs and feature requests.
+  - name: Shared security guidance
+    url: https://github.com/Lucid-Studios/.github/blob/main/SECURITY.md
+    about: Review the Lucid Studios security reporting guidance before disclosing sensitive details.

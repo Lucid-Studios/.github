@@ -1,9 +1,17 @@
 # Support
 
-This repository does not provide project-level support intake.
+This repository is for Lucid Studios organization profile content, shared governance docs, default GitHub health files, and reusable workflows.
 
-For OAN Tech Stack support, issues, and engineering discussion, use:
+## Use this repository for
 
-- https://github.com/Lucid-Studios/Oan-Tech-Stack/issues
+- questions about org-wide templates or standards
+- improvements to shared contribution or security guidance
+- reusable workflow issues that affect multiple Lucid Studios repositories
 
-For public organization profile concerns, use normal organization contact paths.
+## Do not use this repository for
+
+- product feature requests
+- project-specific bugs
+- project-specific support or roadmap discussion
+
+Use the relevant project repository for product work.

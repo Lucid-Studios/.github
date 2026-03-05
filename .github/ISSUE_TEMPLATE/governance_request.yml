@@ -1,0 +1,35 @@
+name: Governance or standards request
+description: Request a change to Lucid Studios shared policy, standards, or contribution rules.
+title: "[Governance]: "
+labels:
+  - governance
+  - documentation
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: Requested change
+      description: Describe the standards, compliance, or governance update.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source or authority
+      description: Provide the framework, regulation, or organizational policy driving the request.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - AI governance
+        - Data governance
+        - Security
+        - Licensing
+        - DCO or CLA
+        - GitHub workflow
+        - Other
+    validations:
+      required: true
