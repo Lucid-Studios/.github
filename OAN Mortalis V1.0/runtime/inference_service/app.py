@@ -2,7 +2,8 @@
 """
 Windows-native inference service template for CradleTek runtime.
 
-This file is source code and should be copied to C:\\CradleTek\\runtime\\inference_service\\app.py
+This file is source code and should be copied to
+<CRADLETEK_RUNTIME_ROOT>\\runtime\\inference_service\\app.py
 by scripts/windows-bootstrap.ps1.
 """
 
@@ -28,7 +29,7 @@ def str_hash(value: str) -> str:
 
 
 def runtime_root() -> Path:
-    return Path(os.getenv("CRADLETEK_RUNTIME_ROOT", r"C:\CradleTek"))
+    return Path(os.getenv("CRADLETEK_RUNTIME_ROOT", str(Path.home() / "CradleTek")))
 
 
 def load_config() -> Dict[str, Any]:

@@ -13,11 +13,19 @@
 *.log
 *.binlog
 
+# Build status artifacts with machine-local paths
+OAN Mortalis V1.0/audit_results.txt
+OAN Mortalis V1.0/audit_results_f1.txt
+OAN Mortalis V1.0/build_error.txt
+
 # Large/local artifacts
 Modules/Antigravity.exe
 
 # Local indexer scratch output
 OAN Mortalis V1.0/tools/corpus_index/
+
+# Local-only foundational corpus configuration
+OAN Mortalis V1.0/.local/
 
 # OAN runtime infrastructure (must remain outside repository history)
 /runtime/

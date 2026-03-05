@@ -3,7 +3,7 @@
 Reference runtime template for SoulFrame.Actualized hosted device.
 
 This script is a template only. It is intended to run outside the repository,
-for example under C:\\CradleTek\\runtime\\soulframe_runtime.py.
+for example under <CRADLETEK_RUNTIME_ROOT>\\runtime\\soulframe_runtime.py.
 """
 
 import argparse
@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any, Dict
 
 import requests
@@ -76,7 +77,8 @@ app = Flask(__name__)
 
 @app.get("/health")
 def health() -> Any:
-    model_path = os.getenv("SOULFRAME_MODEL_PATH", "C:\\CradleTek\\models\\seed.gguf")
+    default_runtime_root = os.getenv("CRADLETEK_RUNTIME_ROOT", str(Path.home() / "CradleTek"))
+    model_path = os.getenv("SOULFRAME_MODEL_PATH", str(Path(default_runtime_root) / "models" / "seed.gguf"))
     return jsonify({
         "status": "ok",
         "model_path": model_path,
