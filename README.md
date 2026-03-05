@@ -1,8 +1,12 @@
+```mermaid
 graph TD
   Operator[Operator / Developer] --> AgentiCore[AgentiCore™]
   AgentiCore --> SLI[SLI Engine]
   SLI --> SoulFrame[SoulFrame™]
   SoulFrame --> CradleTek[CradleTek™]
+```
+
+# 🧬 Lucid Studios
 
 # 🧬 Lucid Studios
 
