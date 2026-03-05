@@ -8,8 +8,6 @@ graph TD
 
 # 🧬 Lucid Studios
 
-# 🧬 Lucid Studios
-
 **Recursive Intelligence Infrastructure**  
 Agentic cognition research, symbolic intelligence systems, and the engineering of Crystallized Mind Entities (CME).
 
