@@ -5,7 +5,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 if ([string]::IsNullOrWhiteSpace($CradleTekRuntimeRoot)) {
-    $CradleTekRuntimeRoot = "C:\CradleTek"
+    $CradleTekRuntimeRoot = Join-Path $env:SystemDrive "CradleTek"
 }
 
 $pidFile = Join-Path $CradleTekRuntimeRoot "runtime\soulframe_runtime.pid"

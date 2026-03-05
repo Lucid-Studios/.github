@@ -5,7 +5,7 @@
 Run the CME runtime stack natively on Windows with runtime state rooted at:
 
 ```text
-C:\CradleTek\
+<CRADLETEK_RUNTIME_ROOT>\
 ```
 
 Repository content remains source-only. Runtime artifacts are external.
@@ -15,7 +15,7 @@ Repository content remains source-only. Runtime artifacts are external.
 Bootstrap creates:
 
 ```text
-C:\CradleTek\
+<CRADLETEK_RUNTIME_ROOT>\
   runtime\
   models\
   logs\
@@ -49,14 +49,14 @@ powershell -ExecutionPolicy Bypass -File scripts\windows-bootstrap.ps1 -SkipStar
 
 The script performs:
 
-1. Runtime directory creation under `C:\CradleTek`.
+1. Runtime directory creation under `<CRADLETEK_RUNTIME_ROOT>`.
 2. Hyper-V and CPU virtualization checks.
 3. Environment variable configuration:
 `CRADLETEK_RUNTIME_ROOT`, `OAN_RUNTIME_ROOT`, `OAN_MODEL_PATH`,
 `OAN_SELF_GEL`, `OAN_CSELF_GEL`, `OAN_GOA`, `OAN_CGOA`, `OAN_SOULFRAME_HOST_URL`.
-4. Python venv setup at `C:\CradleTek\runtime\venv`.
+4. Python venv setup at `<CRADLETEK_RUNTIME_ROOT>\runtime\venv`.
 5. Python package install (`flask`, `requests`).
-6. `llama.cpp` clone/build/install to `C:\CradleTek\runtime\llama.cpp`.
+6. `llama.cpp` clone/build/install to `<CRADLETEK_RUNTIME_ROOT>\runtime\llama.cpp`.
 7. Inference service deployment and service start.
 
 ## llama.cpp Installation Details
@@ -67,7 +67,7 @@ Source repository:
 Installed layout:
 
 ```text
-C:\CradleTek\runtime\llama.cpp\
+<CRADLETEK_RUNTIME_ROOT>\runtime\llama.cpp\
   src\
   build\
   bin\
@@ -80,7 +80,7 @@ Expected binaries in `bin\` include `llama-cli.exe` when build succeeds.
 Runtime service path:
 
 ```text
-C:\CradleTek\runtime\inference_service\app.py
+<CRADLETEK_RUNTIME_ROOT>\runtime\inference_service\app.py
 ```
 
 Default endpoint base:
@@ -110,7 +110,7 @@ Additional control endpoints for existing client compatibility:
 Config file:
 
 ```text
-C:\CradleTek\runtime\config.json
+<CRADLETEK_RUNTIME_ROOT>\runtime\config.json
 ```
 
 Schema fields:
@@ -122,8 +122,8 @@ Schema fields:
 
 ## Model Installation
 
-1. Copy model file manually to `C:\CradleTek\models\` (example: `seed.gguf`).
-2. Update `C:\CradleTek\runtime\config.json` field `model_path`.
+1. Copy model file manually to `<CRADLETEK_RUNTIME_ROOT>\models\` (example: `seed.gguf`).
+2. Update `<CRADLETEK_RUNTIME_ROOT>\runtime\config.json` field `model_path`.
 3. Restart runtime with `scripts\windows-bootstrap.ps1 -SkipLlamaBuild`.
 
 ## SoulFrame.Host Connectivity

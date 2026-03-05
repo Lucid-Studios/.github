@@ -1,5 +1,5 @@
 param(
-    [string]$CradleTekRoot = "C:\CradleTek",
+    [string]$CradleTekRoot = "",
     [string]$PythonBin = "python",
     [string]$LlamaRepoUrl = "https://github.com/ggerganov/llama.cpp",
     [switch]$SkipLlamaBuild,
@@ -7,6 +7,10 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+if ([string]::IsNullOrWhiteSpace($CradleTekRoot)) {
+    $CradleTekRoot = Join-Path $env:SystemDrive "CradleTek"
+}
 
 $isWindowsHost = [System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform(
     [System.Runtime.InteropServices.OSPlatform]::Windows

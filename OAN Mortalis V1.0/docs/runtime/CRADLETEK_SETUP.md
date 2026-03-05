@@ -7,7 +7,7 @@ Install the Windows-native runtime toolchain for the CME stack while keeping rep
 Runtime artifacts must remain outside the repository under:
 
 ```text
-C:\CradleTek\
+<CRADLETEK_RUNTIME_ROOT>\
 ```
 
 ## Runtime Layout
@@ -15,7 +15,7 @@ C:\CradleTek\
 Bootstrap creates:
 
 ```text
-C:\CradleTek\
+<CRADLETEK_RUNTIME_ROOT>\
   runtime\
   models\
   logs\
@@ -45,11 +45,11 @@ powershell -ExecutionPolicy Bypass -File scripts\windows-bootstrap.ps1 -SkipStar
 
 ## What the Script Installs
 
-1. Runtime directory layout under `C:\CradleTek`.
+1. Runtime directory layout under `<CRADLETEK_RUNTIME_ROOT>`.
 2. Hyper-V and CPU virtualization checks.
-3. Python runtime venv at `C:\CradleTek\runtime\venv`.
+3. Python runtime venv at `<CRADLETEK_RUNTIME_ROOT>\runtime\venv`.
 4. Python dependencies (`flask`, `requests`).
-5. `llama.cpp` source/build/binaries under `C:\CradleTek\runtime\llama.cpp`.
+5. `llama.cpp` source/build/binaries under `<CRADLETEK_RUNTIME_ROOT>\runtime\llama.cpp`.
 6. Inference service deployment and optional service start.
 
 ## Required Dependencies
