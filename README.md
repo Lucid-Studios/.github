@@ -31,6 +31,14 @@ It serves four roles:
 
 Product repositories may override these defaults when they need stricter or domain-specific rules. Overrides should narrow or specialize the Lucid Studios baseline, not weaken it without maintainer approval.
 
+## Public Research Posture
+
+The shared public research boundary is recorded in
+[`docs/RESEARCH_POSTURE.md`](docs/RESEARCH_POSTURE.md). It explains how Lucid
+uses evidence, provenance, human review, digital-cognitive hazard awareness,
+and authority routing without implying legal, professional, regulatory,
+public-service, or model-safety certification by default.
+
 ## Scope
 
 This repository is not the place for product implementation issues, roadmap work, or project-specific support requests unless the request is about shared org governance, templates, or workflows.
