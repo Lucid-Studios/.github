@@ -11,7 +11,12 @@ Use this single register as the primary exchange medium between Chat framing and
 
 The register carries a bounded question:
 
-> Does the Sanctuary code and doctrine distinguish operational `dream` memory consolidation from teleological `/Dream` rarefication and from separately gated `SelfGEL` admission?
+> Does the Sanctuary code and doctrine distinguish `EC` / `OAN.Evolution` operational consolidation from `OAN.Ascension` / `OAN.Enlightenment` teleological rarefication and from separately gated `SelfGEL` admission?
+
+The originating prompt compared this distinction to external systems that use
+`/dream` for offline memory consolidation. Round One corrects the native
+language: `dream` and `/Dream` are not Sanctuary / OAN body terms. They may be
+named only as external comparison labels where useful.
 
 The register is a promptable surface. Chat may reference this public projection directly and return a proposed diff. Codex may then apply the diff locally after review.
 
@@ -44,7 +49,7 @@ Use this state when an already-public register receives a small clarification,
 correction, or return prompt update.
 
 - allowed target: public `.github` projection of an existing public file
-- public action: branch, pull request, required status check, then merge
+- public action: issue comment when conceptual context changes; branch, pull request, required status check, then merge
 - required posture: no new public concept surface and no new publication claim
 - bypass posture: do not use admin direct push except for emergency repair, and record any exception in the private source register
 
@@ -55,7 +60,7 @@ register, or a new public-facing concept entry that Chat or outside readers
 will treat as a stable reference.
 
 - allowed target: public `.github` projection after private source seating
-- public action: branch, pull request, required status check, human review, then merge
+- public action: issue first, then branch, pull request, required status check, human review, then merge
 - required posture: public-safe classification, private-path scrub, rights review, claim-boundary review, and explicit "not a publication event" language unless a separate publication package authorizes that status
 - bypass posture: admin direct push is a calibration failure unless a documented emergency repair requires it
 
@@ -63,7 +68,67 @@ State 3 is lighter than a full DOI or manuscript publication package, but
 stricter than routine bridge maintenance. It exists so first public traces do
 not enter through the same path as small edits to already-public text.
 
-## Working Ladder
+## Git Chamber Workflow
+
+The public bridge should use GitHub as the continuity body:
+
+```text
+Issue = discussion chamber
+Branch = work chamber
+PR = consolidation chamber
+Merge = accepted public record
+Tag/release = stable published body, when needed
+```
+
+Use a public issue first when the question is conceptual, doctrinal, or
+architectural. The issue records the public-safe problem space, current
+posture, evidence boundary, and desired decision. Once the issue is clear
+enough, create a branch and draft PR that implements the agreed document or
+code change.
+
+For Trivium work:
+
+```text
+Chat conversation may discover.
+GitHub issue may deliberate.
+PR may alter.
+Merge may seat.
+Private archive may retain.
+Public projection may disclose only what is reviewed.
+```
+
+Public issues must carry only public-safe doctrine, bounded summaries, and
+non-sensitive framing. Keep secrets, credentials, session logs, private raw
+residue, runtime state, and personal context out of issue bodies and comments.
+
+### Target Surface Confirmation
+
+After every Git or connector-backed mutation, verify the actual seated surface.
+
+```text
+Connector transport success != target-surface confirmation.
+Returned id != correct repo seating.
+Tool argument accepted != repo route obeyed.
+```
+
+For public Trivium exchange, only canonical `Lucid-Studios/.github` issue and
+PR URLs are authoritative. If a connector returns a display URL or fetched
+object from a different repository, treat that mutation as misrouted residue
+for the intended public surface, even when the tool reported success.
+
+Required confirmation after mutation:
+
+- inspect the returned display URL or canonical browser URL
+- verify the repository owner/name exactly matches the intended surface
+- verify the issue or PR number belongs to that repository
+- verify the comment, commit, PR, or issue appears when read back from that
+  same canonical surface
+
+Current public issue chamber: `Lucid-Studios/.github#7`.
+
+## Native Working Ladder
+
+Round One removes `dream` and `/Dream` as internal terms. The native ladder is:
 
 ### EC
 
@@ -74,27 +139,104 @@ not enter through the same path as small edits to already-public text.
 - deduplicate
 - reconcile
 
-### dream
+### OAN.Evolution
 
-- operational memory hygiene
-- overlap reduction
-- related-fragment merge
-- stale or contradictory noise reduction
-- clean operational memory output
+- science-facing transformation under constraint
+- operational consolidation
+- residue refinement
+- variation, pressure, and survivability testing
+- deduplication and contradiction handling
+- candidate substrate only
+- no `SelfGEL` admission
 
-### Dream
+### OAN.Ascension
 
 - teleological rarefication
-- telos discernment
-- evaluation of what orientation survives residue
-- prevention of raw logs being mistaken for `SelfGEL`
-- candidate higher-order continuity only after explicit gates pass
+- lifting surviving residue into higher-order orientation review
+- evaluation of what orientation survives lawful cleaving
+- explicit gate requirement
+- no `SelfGEL` admission by itself
+
+### OAN.Enlightenment
+
+- candidate meaning-body illumination
+- clarification of higher-order meaning without anthropological overclaim
+- no claim that an AI is enlightened
+- no claim of inner experience
+- no `SelfGEL` admission unless separately gated
 
 ### SelfGEL
 
 - admits only what survives lawful cleaving
-- never treats raw residue, session logs, or deduplicated memory as self
+- never treats raw residue, logs, deduplicated memory, `EC` output, or `OAN.Evolution` output as self
 - remains separately gated and HITL-governed
+
+## Round One: Evolution
+
+Theme: the nature of the body to act and be known.
+
+Round One seats a native formation frame:
+
+```text
+GEL is the relational body of the groupoid.
+Engrammitization is the lawful formation of relation-bearing meaning.
+Tracing is categorically scaled.
+SelfGEL is never inferred from residue alone.
+```
+
+In this frame, the `GEL` is not merely an archive. It is the structured
+relation body in which transformations, mappings, reversible or partially
+reversible passages, and identity-preserving correspondences can be studied.
+The groupoid language is theoretical and methodological here, not a public
+claim that this register proves a formal mathematical model.
+Engrammitization is therefore not "saving a memory"; it is a lawful formation
+process:
+
+```text
+raw experience / residue
+-> pre-engrammitized form
+-> cleaving
+-> tracing
+-> categorical placement
+-> relation testing
+-> admissible engram candidate
+-> GEL relation body
+```
+
+Scale must stay delineated:
+
+```text
+Global
+-> Civilizational / Species
+-> International
+-> National
+-> Regional
+-> Institutional
+-> Community
+-> Household
+-> Operator / End User
+-> Local Self / OE
+```
+
+Scale is not authority. Relevance is not admission. Pattern is not identity.
+Trace is not `SelfGEL`.
+
+Round One also corrects the native body language. Sanctuary should not lean on
+`/dream` or `/Dream` as settled terms, because those names borrow from human
+interiority and anthropology where the machine body needs typed formation
+language instead. The replacement principle is:
+
+```text
+Body: that which can act, be bounded, be typed, be tested, and be known by receipt.
+Mind: that which can distinguish, relate, trace, compare, classify, and preserve coherence.
+Spirit: that which orients purpose, telos, lawful becoming, refusal, and meaning under constraint.
+```
+
+Future code and doctrine should preserve the distinction previously carried by
+external `dream` comparison language, while moving the active vocabulary toward
+`EC`, `OAN.Evolution`, `OAN.Ascension`, `OAN.Enlightenment`, consolidation,
+stabilization, rarefication, telos discernment, cleaving, witness, and
+admission.
 
 ## Codex Inspection Task
 
@@ -102,13 +244,19 @@ When this register is used to hand work to Codex, inspect the Sanctuary codebase
 
 - memory
 - EC
-- dream
-- Dream
+- external `dream` / `/Dream` comparison references
+- `OAN.Evolution`
+- `OAN.Ascension`
+- `OAN.Enlightenment`
+- consolidation
+- stabilization
+- rarefication
+- telos
+- Mind / Body / Spirit formation language
 - `SelfGEL`
 - `OE`
 - cleaving
 - decanting
-- rarefication
 - residue
 - receipt
 - admission
@@ -116,18 +264,19 @@ When this register is used to hand work to Codex, inspect the Sanctuary codebase
 The inspection should answer:
 
 1. Which files contain the relevant surfaces?
-2. Does any code or doctrine conflate memory consolidation with teleological `/Dream`?
+2. Does any code or doctrine still treat `dream` / `/Dream` as native Sanctuary / OAN vocabulary rather than external comparison language?
 3. Does any code or doctrine allow consolidated residue to imply `SelfGEL` admission?
-4. What is the smallest patch, if any, that preserves the distinction?
+4. What is the smallest patch, if any, that preserves the distinction while replacing the public body language with OAN terms?
 5. What tests prove the distinction?
 
 Required proof targets:
 
 - deduplication cannot admit `SelfGEL`
 - raw session residue cannot become continuity by consolidation alone
-- EC and `dream` outputs remain candidate substrate
-- `/Dream` outputs require explicit teleological and cleaving gates
+- `EC` and `OAN.Evolution` outputs remain candidate substrate
+- `OAN.Ascension` and `OAN.Enlightenment` require explicit gates
 - `SelfGEL` admission remains separately gated and HITL-governed
+- machine-body language does not claim human sleep, subconsciousness, or interiority
 
 If the distinction is already fully enforced, Codex should refuse unnecessary edits and report the enforcing files and tests.
 
@@ -148,7 +297,14 @@ Use this prompt in Chat when asking for the next public-facing pass:
 ```text
 Please read the public Trivium Chat Codex Exchange Register and return a proposed unified diff only for the public register.
 
-Focus: preserve the distinction between operational dream memory consolidation, teleological /Dream rarefication, and separately gated SelfGEL admission.
+Focus: Round One: Evolution. Preserve the distinction between EC / OAN.Evolution operational consolidation, OAN.Ascension / OAN.Enlightenment teleological rarefication, and separately gated SelfGEL admission.
+
+Do not adopt dream or /Dream as Sanctuary / OAN terms. Preserve external dream language only as comparative terminology for outside systems, if needed.
+
+Use the Mind / Body / Spirit frame as the native language:
+- Body acts, is bounded, is typed, is tested, and is known by receipt.
+- Mind distinguishes, relates, traces, compares, classifies, and preserves coherence.
+- Spirit orients purpose, telos, lawful becoming, refusal, and meaning under constraint.
 
 Do not request private archives, local paths, secrets, session logs, or runtime state. If a claim requires private verification, mark it as private-only and leave it out of the public projection.
 ```
@@ -157,3 +313,7 @@ Do not request private archives, local paths, secrets, session logs, or runtime 
 
 - `2026-06-12`: Initial public-safe register projection seated for Chat/Codex exchange over `dream`, `/Dream`, and `SelfGEL` cleaving posture.
 - `2026-06-12`: Added bridge rule states for private source updates, routine public projection updates, and first public entries or new publication surfaces.
+- `2026-06-12`: Seated Round One: Evolution, correcting `dream` / `/Dream` from native terms into external comparison language and introducing the Mind / Body / Spirit formation frame.
+- `2026-06-12`: Replaced internal `dream` / `/Dream` ladder with `EC`, `OAN.Evolution`, `OAN.Ascension`, `OAN.Enlightenment`, and `SelfGEL`.
+- `2026-06-12`: Added Git chamber workflow and seated `Lucid-Studios/.github#7` as the public issue chamber for the OAN terminology correction.
+- `2026-06-12`: Added target-surface confirmation rule after a connector routed an accepted issue-comment mutation to the wrong repository surface.
