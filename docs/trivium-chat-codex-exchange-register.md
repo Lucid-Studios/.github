@@ -27,6 +27,42 @@ The register is a promptable surface. Chat may reference this public projection 
 - No `GEL`, `SelfGEL`, `CME.Actual`, `Sanctuary.Actual`, provider call, model binding, external action, or publication claim is opened by this register.
 - Prior social-experiment participant residue is not active authority unless explicitly reauthorized.
 
+## Bridge Rule States
+
+### State 1: Private Source Update
+
+Use this state when the register changes only the private source of record.
+
+- allowed target: private source repository
+- public action: none
+- required posture: local review for scope, rights, and authority boundaries
+- bypass posture: not applicable to the public bridge
+
+### State 2: Routine Public Projection Update
+
+Use this state when an already-public register receives a small clarification,
+correction, or return prompt update.
+
+- allowed target: public `.github` projection of an existing public file
+- public action: branch, pull request, required status check, then merge
+- required posture: no new public concept surface and no new publication claim
+- bypass posture: do not use admin direct push except for emergency repair, and record any exception in the private source register
+
+### State 3: First Public Entry Or New Publication Surface
+
+Use this state when the bridge creates a new public file, a first public
+register, or a new public-facing concept entry that Chat or outside readers
+will treat as a stable reference.
+
+- allowed target: public `.github` projection after private source seating
+- public action: branch, pull request, required status check, human review, then merge
+- required posture: public-safe classification, private-path scrub, rights review, claim-boundary review, and explicit "not a publication event" language unless a separate publication package authorizes that status
+- bypass posture: admin direct push is a calibration failure unless a documented emergency repair requires it
+
+State 3 is lighter than a full DOI or manuscript publication package, but
+stricter than routine bridge maintenance. It exists so first public traces do
+not enter through the same path as small edits to already-public text.
+
 ## Working Ladder
 
 ### EC
@@ -120,3 +156,4 @@ Do not request private archives, local paths, secrets, session logs, or runtime 
 ## Change Log
 
 - `2026-06-12`: Initial public-safe register projection seated for Chat/Codex exchange over `dream`, `/Dream`, and `SelfGEL` cleaving posture.
+- `2026-06-12`: Added bridge rule states for private source updates, routine public projection updates, and first public entries or new publication surfaces.
