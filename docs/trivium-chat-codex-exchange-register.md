@@ -101,6 +101,29 @@ Public issues must carry only public-safe doctrine, bounded summaries, and
 non-sensitive framing. Keep secrets, credentials, session logs, private raw
 residue, runtime state, and personal context out of issue bodies and comments.
 
+### Target Surface Confirmation
+
+After every Git or connector-backed mutation, verify the actual seated surface.
+
+```text
+Connector transport success != target-surface confirmation.
+Returned id != correct repo seating.
+Tool argument accepted != repo route obeyed.
+```
+
+For public Trivium exchange, only canonical `Lucid-Studios/.github` issue and
+PR URLs are authoritative. If a connector returns a display URL or fetched
+object from a different repository, treat that mutation as misrouted residue
+for the intended public surface, even when the tool reported success.
+
+Required confirmation after mutation:
+
+- inspect the returned display URL or canonical browser URL
+- verify the repository owner/name exactly matches the intended surface
+- verify the issue or PR number belongs to that repository
+- verify the comment, commit, PR, or issue appears when read back from that
+  same canonical surface
+
 Current public issue chamber: `Lucid-Studios/.github#7`.
 
 ## Native Working Ladder
@@ -293,3 +316,4 @@ Do not request private archives, local paths, secrets, session logs, or runtime 
 - `2026-06-12`: Seated Round One: Evolution, correcting `dream` / `/Dream` from native terms into external comparison language and introducing the Mind / Body / Spirit formation frame.
 - `2026-06-12`: Replaced internal `dream` / `/Dream` ladder with `EC`, `OAN.Evolution`, `OAN.Ascension`, `OAN.Enlightenment`, and `SelfGEL`.
 - `2026-06-12`: Added Git chamber workflow and seated `Lucid-Studios/.github#7` as the public issue chamber for the OAN terminology correction.
+- `2026-06-12`: Added target-surface confirmation rule after a connector routed an accepted issue-comment mutation to the wrong repository surface.
